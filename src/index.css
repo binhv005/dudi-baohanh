@@ -1,0 +1,464 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* 80px offset for fixed sticky navbar */
+  }
+
+  body {
+    background-color: #FAFAFC;
+    color: #1E293B;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ==========================================================================
+   Smooth Scroll-Driven Section Layout
+   ========================================================================== */
+
+/* Sections are spacious, beautifully centered and naturally fluid */
+.snap-section,
+.scroll-reveal-section {
+  min-height: calc(100svh - 4rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .snap-section,
+  .scroll-reveal-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* Internal container styling */
+.internal-scroll-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* ==========================================================================
+/* ==========================================================================
+   MODERN SMOOTH SCROLL REVEAL ANIMATION SYSTEM (0.6s - 0.9s)
+   - GPU-accelerated (transform3d + opacity)
+   - Staggered sequence for Section Header -> Content Cards -> CTA
+   ========================================================================== */
+
+/* 1. Base State for Scroll Reveal Elements (Smooth hidden initial state) */
+.snap-section,
+.scroll-reveal-section,
+.reveal-fade-up,
+.reveal-fade-down,
+.reveal-fade-left,
+.reveal-fade-right,
+.reveal-scale-up,
+.reveal-stagger-item,
+.reveal-blur-in,
+.reveal-zoom-in,
+.reveal-on-scroll {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* Base translations before reveal */
+.snap-section,
+.scroll-reveal-section {
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade-up,
+.reveal-on-scroll {
+  transform: translate3d(0, 40px, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade-down {
+  transform: translate3d(0, -40px, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade-left {
+  transform: translate3d(-45px, 0, 0);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade-right {
+  transform: translate3d(45px, 0, 0);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale-up {
+  transform: translate3d(0, 30px, 0) scale(0.94);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-zoom-in {
+  transform: scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-blur-in {
+  filter: blur(10px);
+  transform: translate3d(0, 25px, 0);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger-item {
+  transform: translate3d(0, 35px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Revealed State (Targeted directly or when section is revealed) */
+.is-revealed,
+.revealed,
+.is-revealed.snap-section,
+.is-revealed.scroll-reveal-section,
+.is-revealed .reveal-fade-up,
+.is-revealed .reveal-fade-down,
+.is-revealed .reveal-fade-left,
+.is-revealed .reveal-fade-right,
+.is-revealed .reveal-scale-up,
+.is-revealed .reveal-stagger-item,
+.is-revealed .reveal-blur-in,
+.is-revealed .reveal-zoom-in,
+.is-revealed .reveal-on-scroll,
+.reveal-fade-up.revealed,
+.reveal-fade-down.revealed,
+.reveal-fade-left.revealed,
+.reveal-fade-right.revealed,
+.reveal-scale-up.revealed,
+.reveal-stagger-item.revealed,
+.reveal-blur-in.revealed,
+.reveal-zoom-in.revealed,
+.reveal-on-scroll.revealed {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  filter: blur(0) !important;
+}
+
+/* ==========================================================================
+   Continuous Ambient Keyframes & Micro-Animations
+   ========================================================================== */
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 4.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(236, 20, 32, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(236, 20, 32, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(236, 20, 32, 0);
+  }
+}
+
+.animate-glow-ring {
+  animation: pulse-glow-ring 2.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes cosmic-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.animate-cosmic-pulse {
+  animation: cosmic-pulse 6s ease-in-out infinite;
+}
+
+/* Continuous Infinite Seamless Marquee Slider */
+@keyframes marquee-slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-infinite-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Central Hub Tech Pulse & Radar Orbit Keyframes */
+@keyframes mascot-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate3d(2px, -8px, 0) rotate(0.8deg) scale(1.015);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) rotate(0deg) scale(1.03);
+  }
+  75% {
+    transform: translate3d(-2px, -7px, 0) rotate(-0.8deg) scale(1.015);
+  }
+}
+
+@keyframes aura-spread {
+  0% {
+    r: 55;
+    opacity: 0.95;
+    stroke-width: 3.5px;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    r: 155;
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+
+@keyframes ground-shadow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(0.72);
+    opacity: 0.28;
+  }
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0px) scale(0.7);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes radar-orbit {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+
+@keyframes laser-flow {
+  from {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-mascot-float {
+  animation: mascot-float 4s ease-in-out infinite;
+  transform-origin: 145px 230px;
+}
+
+.animate-aura-spread {
+  animation: aura-spread 3.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  transform-origin: 145px 210px;
+}
+
+.animate-aura-spread-delayed {
+  animation: aura-spread 3.2s cubic-bezier(0.16, 1, 0.3, 1) 1.6s infinite;
+  transform-origin: 145px 210px;
+}
+
+.animate-ground-shadow {
+  animation: ground-shadow 4s ease-in-out infinite;
+  transform-origin: 145px 352px;
+}
+
+.animate-float-particle-1 {
+  animation: float-particle 3.2s ease-out infinite;
+  transform-origin: 60px 220px;
+}
+.animate-float-particle-2 {
+  animation: float-particle 3.6s ease-out 0.9s infinite;
+  transform-origin: 225px 240px;
+}
+.animate-float-particle-3 {
+  animation: float-particle 2.9s ease-out 1.7s infinite;
+  transform-origin: 75px 140px;
+}
+.animate-float-particle-4 {
+  animation: float-particle 3.4s ease-out 0.4s infinite;
+  transform-origin: 215px 130px;
+}
+
+.animate-radar-orbit {
+  animation: radar-orbit 25s linear infinite;
+}
+
+.animate-laser-flow {
+  stroke-dasharray: 5 3;
+  animation: laser-flow 0.9s linear infinite;
+}
+
+/* Mobile optimizations: snappier animations and smaller offsets */
+@media (max-width: 640px) {
+  .reveal-fade-up,
+  .reveal-fade-down {
+    transform: translate3d(0, 14px, 0);
+    transition-duration: 0.5s;
+  }
+  .reveal-fade-left,
+  .reveal-fade-right {
+    transform: translate3d(0, 12px, 0);
+    transition-duration: 0.5s;
+  }
+  .reveal-scale-up,
+  .reveal-zoom-in,
+  .reveal-stagger-item {
+    transform: translate3d(0, 12px, 0) scale(0.98);
+    transition-duration: 0.55s;
+  }
+}
+
+/* Cyber tech grid patterns */
+.tech-grid-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.tech-grid-light {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Infinite Floating Ambient Bubbles */
+@keyframes bubble-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.65);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.8;
+  }
+  30% {
+    transform: translate3d(18px, -35svh, 0) scale(0.95);
+    opacity: 0.9;
+  }
+  65% {
+    transform: translate3d(-20px, -75svh, 0) scale(1.05);
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(15px, -118svh, 0) scale(0.7);
+    opacity: 0;
+  }
+}
+
+.animate-bubble-rise {
+  animation: bubble-rise linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
