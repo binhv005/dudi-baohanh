@@ -26,7 +26,7 @@ export default function FloatingActions() {
   };
 
   return (
-    <div className="fixed bottom-5 right-4 sm:right-6 z-40 flex flex-col items-end gap-2.5">
+    <div className="fixed bottom-4 right-3 sm:bottom-5 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-2.5">
 
       {/* Zalo Button */}
       <a
@@ -34,11 +34,11 @@ export default function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackZaloClick("floating_button")}
-        className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
+        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
         title="Chat Zalo hỗ trợ kỹ thuật"
         aria-label="Chat Zalo với DUDI Software"
       >
-        <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
+        <MessageSquare className="w-4.5 h-4.5 sm:w-6 sm:h-6" />
       </a>
 
       {/* Hotline Button */}
@@ -48,22 +48,22 @@ export default function FloatingActions() {
           trackPhoneClick("floating_button");
           handleHotlineClick(e, COMPANY_INFO.hotlineFormatted, COMPANY_INFO.hotline);
         }}
-        className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95 cursor-pointer"
         title="Gọi hotline DUDI (Click để sao chép trên máy tính)"
         aria-label="Gọi hotline DUDI Software"
       >
-        <Phone className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+        <Phone className="w-4.5 h-4.5 sm:w-6 sm:h-6 animate-pulse" />
       </a>
 
       {/* Scroll to Top button (At the bottom, same size) */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white text-slate-700 shadow-lg border border-slate-200/90 flex items-center justify-center hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 cursor-pointer animate-fadeIn"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-slate-700 shadow-lg border border-slate-200/90 flex items-center justify-center hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 cursor-pointer animate-fadeIn"
           aria-label="Cuộn lên đầu trang"
           title="Lên đầu trang"
         >
-          <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ArrowUp className="w-4.5 h-4.5 sm:w-6 sm:h-6" />
         </button>
       )}
     </div>

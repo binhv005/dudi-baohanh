@@ -105,7 +105,7 @@ export default function CasesSection() {
   ];
 
   return (
-    <section id="cases" className="snap-section bg-[#FDFBF7] border-b border-slate-200/90 relative overflow-hidden h-[100svh] max-h-[100svh] flex flex-col justify-center py-2 sm:py-3">
+    <section id="cases" className="snap-section bg-[#FDFBF7] border-b border-slate-200/90 relative overflow-hidden min-h-[100svh] flex flex-col justify-center py-8 sm:py-12 md:py-14">
       
       {/* Infinite Floating Ambient Bubbles Layer (Single Color & Sparse) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -138,16 +138,16 @@ export default function CasesSection() {
         ))}
       </div>
 
-      <div className="internal-scroll-container relative z-10 flex flex-col justify-center h-full w-full">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full flex flex-col justify-center h-full">
+      <div className="internal-scroll-container relative z-10 flex flex-col justify-center w-full my-auto">
+        <div className="max-w-5xl mx-auto px-3.5 sm:px-6 w-full flex flex-col justify-center">
 
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-xl mx-auto mb-3 sm:mb-4">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-[10px] font-bold uppercase tracking-wider mb-1 shadow-2xs">
+          <div className="reveal-fade-up text-center max-w-xl mx-auto mb-3.5 sm:mb-5">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-[10px] font-bold uppercase tracking-wider mb-1.5 shadow-2xs">
               <Sparkles className="w-3 h-3 text-rose-600" />
               <span>S09 — TÌNH HUỐNG KỸ THUẬT THỰC TẾ</span>
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-tight">
               4 tình huống xử lý kỹ thuật trước / sau tiêu biểu
             </h2>
           </div>

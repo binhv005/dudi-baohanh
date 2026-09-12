@@ -136,7 +136,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
   return (
     <section 
       id="audit-form" 
-      className="snap-section relative min-h-[100svh] overflow-hidden border-b border-slate-200/90 bg-slate-900 flex items-center"
+      className="snap-section relative min-h-[100svh] overflow-hidden border-b border-slate-200/90 bg-slate-900 flex items-center py-8 sm:py-12 lg:py-16"
     >
       {/* Background Image Layer with smooth parallax */}
       <div 
@@ -154,22 +154,22 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
       {/* Discrete bottom-right corner gradient to conceal any corner mark */}
       <div className="absolute bottom-0 right-0 w-28 h-16 bg-gradient-to-tl from-slate-900/60 via-slate-900/30 to-transparent pointer-events-none z-0" />
 
-      <div className="internal-scroll-container relative z-10 w-full flex items-center py-6 sm:py-8 min-h-[100svh]">
+      <div className="internal-scroll-container relative z-10 w-full flex items-center my-auto py-2 sm:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full flex items-center justify-center md:justify-start">
         
           {/* Form Card Positioned Over the Left Consultation Intake Zone - Enlarged & Spacious */}
-          <div className="w-full max-w-[450px] sm:max-w-[480px] lg:max-w-[510px] md:ml-4 lg:ml-8 xl:ml-12">
-            <div className="reveal-scale-up relative bg-white/95 backdrop-blur-md rounded-2xl p-4.5 sm:p-5.5 lg:p-6 shadow-2xl border border-white/80 ring-1 ring-slate-900/10 text-slate-900 overflow-hidden">
+          <div className="w-full max-w-[430px] sm:max-w-[480px] lg:max-w-[510px] mx-auto md:mx-0 md:ml-4 lg:ml-8 xl:ml-12">
+            <div className="reveal-scale-up relative bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5.5 lg:p-6 shadow-2xl border border-white/80 ring-1 ring-slate-900/10 text-slate-900 overflow-hidden">
               
               {/* Top Mech Accent Notch */}
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 rounded-b-md shadow-[0_0_8px_#EC1420]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 rounded-b-md shadow-[0_0_8px_#EC1420]" />
               
               {/* Tech Side Grips */}
               <div className="absolute top-5 left-0 w-0.5 h-5 bg-brand-500 rounded-r-sm" />
               <div className="absolute top-5 right-0 w-0.5 h-5 bg-brand-500 rounded-l-sm" />
 
               {/* Form Title */}
-              <div className="text-center mb-3 pt-0.5">
+              <div className="text-center mb-3 pt-1">
                 <h3 className="text-base sm:text-lg lg:text-xl font-black text-slate-900 tracking-tight leading-tight">
                   Đăng ký <span className="text-brand-600 font-extrabold">Khảo sát Website</span>
                 </h3>
