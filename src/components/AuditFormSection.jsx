@@ -39,7 +39,13 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formTouched, setFormTouched] = useState(false);
+
+  // URL Web App của Google Apps Script (có thể định cấu hình qua file .env VITE_GOOGLE_SCRIPT_URL)
+  const GOOGLE_SCRIPT_URL = 
+    import.meta.env.VITE_GOOGLE_SCRIPT_URL || 
+    "https://script.google.com/macros/s/AKfycbz..."; // Thay thế URL Web App của bạn ở đây
 
   useEffect(() => {
     if (selectedPackage && selectedPackage !== "Chưa rõ") {
@@ -55,6 +61,9 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: null }));
+    }
+    if (submitError) {
+      setSubmitError("");
     }
   };
 
@@ -76,6 +85,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
   const handleReset = () => {
     setFormData(initialFormData);
     setErrors({});
+    setSubmitError("");
   };
 
   const validate = () => {
@@ -109,6 +119,8 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError("");
+
     if (!validate()) {
       const firstError = Object.keys(errors)[0];
       trackFormError(firstError, errors[firstError]);
@@ -118,11 +130,37 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
     setIsSubmitting(true);
     trackFormSubmit(formData.packageInterest, formData.platform);
 
-    setTimeout(() => {
+    const payload = {
+      websiteUrl: formData.websiteUrl.trim(),
+      platform: formData.platform,
+      packageInterest: formData.packageInterest,
+      fullName: formData.fullName.trim(),
+      phone: formData.phone.trim(),
+      situations: formData.situations,
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      // Gửi request đến Google Apps Script
+      // Sử dụng mode: 'no-cors' và Content-Type text/plain để tránh vướng CORS preflight từ Google Apps Script
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+      });
+
       setIsSubmitting(false);
       setIsSuccess(true);
       trackFormSuccess(formData.packageInterest);
-    }, 900);
+    } catch (err) {
+      console.error("Lỗi gửi form:", err);
+      setIsSubmitting(false);
+      setSubmitError("Có lỗi xảy ra khi gửi dữ liệu. Vui lòng thử lại hoặc liên hệ hotline!");
+      trackFormError("network_error", err.message || "Failed to submit");
+    }
   };
 
   const situationOptions = [
@@ -370,6 +408,14 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                       <span>Bảo mật 100%</span>
                     </span>
                   </div>
+
+                  {/* Error Alert */}
+                  {submitError && (
+                    <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-[11px] flex items-center gap-1.5 animate-fadeIn">
+                      <AlertCircle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>{submitError}</span>
+                    </div>
+                  )}
 
                   {/* Dual Action Buttons */}
                   <div className="pt-1 flex items-center gap-2">
