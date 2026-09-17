@@ -12,7 +12,7 @@ import {
 import { trackCtaClick } from "../utils/tracking";
 
 export default function ServicesGroup() {
-  const [activeNode, setActiveNode] = useState(0);
+  const [activeNode, setActiveNode] = useState(null);
 
   const handlePricingScroll = () => {
     trackCtaClick("services_group", "Xem chi tiết định mức các gói", "#pricing");
@@ -108,10 +108,6 @@ export default function ServicesGroup() {
           
           {/* Section Header */}
           <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-3 sm:mb-4">
-            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-brand-200 text-brand-700 text-[10px] font-bold uppercase tracking-wider mb-1 shadow-2xs">
-              <Sparkles className="w-3 h-3 text-brand-600" />
-              <span>PHẠM VI DỊCH VỤ ĐỊNH KỲ</span>
-            </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mb-0.5">
               6 nhóm công việc DUDI thực hiện hằng tháng
             </h2>
@@ -120,12 +116,12 @@ export default function ServicesGroup() {
             </p>
           </div>
 
-          {/* MAIN INFOGRAPHIC: ENLARGED RADIAL HUB (LEFT) + BALANCED TIMELINE (RIGHT) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6 items-center mb-3">
+          {/* MAIN INFOGRAPHIC: ENLARGED RADIAL HUB (+20% SIZE) (LEFT) + BALANCED TIMELINE (RIGHT) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center mb-3">
             
-            {/* LEFT: VECTOR RADIAL INFOGRAPHIC (viewBox: 0 0 420 420) */}
-            <div className="lg:col-span-5 flex items-center justify-center relative reveal-scale-up">
-              <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px] aspect-square relative select-none">
+            {/* LEFT: VECTOR RADIAL INFOGRAPHIC (viewBox: 0 0 420 420) - Scaled up +20% */}
+            <div className="lg:col-span-6 flex items-center justify-center relative reveal-scale-up">
+              <div className="w-full max-w-[340px] sm:max-w-[385px] md:max-w-[430px] lg:max-w-[460px] aspect-square relative select-none">
                 
                 <svg viewBox="0 0 420 420" className="w-full h-full overflow-visible">
                   <defs>
@@ -266,7 +262,7 @@ export default function ServicesGroup() {
                   {/* 3D DUDI Mascot Character with Enhanced Organic Floating & 3D Sway Animation */}
                   <g className="animate-mascot-float cursor-pointer transition-transform duration-300 hover:scale-[1.08] hover:-translate-y-2">
                     <image
-                      href="/mascot-pointing.png"
+                      href="/mascot-pointing.webp"
                       x="5"
                       y="18"
                       width="280"
@@ -291,24 +287,22 @@ export default function ServicesGroup() {
                       onClick={() => setActiveNode(index)}
                       onMouseEnter={() => setActiveNode(index)}
                       aria-label={node.title}
-                      className={`absolute -translate-x-1/2 -translate-y-1/2 w-11.5 h-11.5 sm:w-12.5 sm:h-12.5 md:w-13 md:h-13 rounded-full bg-white transition-all duration-300 flex items-center justify-center cursor-pointer shadow-md z-20 ${
+                      className={`absolute -translate-x-1/2 -translate-y-1/2 w-12.5 h-12.5 sm:w-14 sm:h-14 md:w-15 md:h-15 rounded-full bg-white transition-all duration-300 flex items-center justify-center cursor-pointer shadow-md z-20 ${
                         isSelected
-                          ? "scale-115 ring-3 ring-offset-1"
-                          : "hover:scale-108 ring-2"
+                          ? "scale-115 shadow-lg"
+                          : "hover:scale-108"
                       }`}
                       style={{
                         left: `${leftPct}%`,
                         top: `${topPct}%`,
-                        borderColor: node.hexColor,
-                        boxShadow: isSelected ? `0 8px 20px ${node.hexColor}45` : "0 4px 10px rgba(0,0,0,0.08)",
-                        ringColor: node.hexColor,
+                        boxShadow: isSelected ? `0 10px 25px ${node.hexColor}35` : "0 4px 12px rgba(0,0,0,0.06)",
                         backgroundColor: "#FFFFFF"
                       }}
                     >
-                      {/* Thick Colorful Border Ring */}
+                      {/* Clean Colorful Icon Container */}
                       <div 
-                        className="w-full h-full rounded-full flex items-center justify-center border-[3.5px] transition-colors"
-                        style={{ borderColor: node.hexColor }}
+                        className="w-full h-full rounded-full flex items-center justify-center transition-colors"
+                        style={{ backgroundColor: isSelected ? `${node.hexColor}14` : '#F8FAFC' }}
                       >
                         <div className="flex items-center justify-center">
                           {node.icon}
@@ -317,7 +311,7 @@ export default function ServicesGroup() {
 
                       {/* Number badge */}
                       <span 
-                        className="absolute -top-1 -right-1 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full text-[8.5px] sm:text-[9px] font-black text-white flex items-center justify-center shadow-xs"
+                        className="absolute -top-1 -right-1 w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full text-[9px] sm:text-[10px] font-black text-white flex items-center justify-center shadow-xs"
                         style={{ backgroundColor: node.hexColor }}
                       >
                         {node.id}
@@ -330,7 +324,10 @@ export default function ServicesGroup() {
             </div>
 
             {/* RIGHT: CONNECTED STEPPED TIMELINE LIST */}
-            <div className="lg:col-span-7 space-y-1 sm:space-y-1.5 relative border-l-2 border-dashed border-slate-300 pl-3.5 sm:pl-4 ml-1">
+            <div 
+              onMouseLeave={() => setActiveNode(null)}
+              className="lg:col-span-6 space-y-1 sm:space-y-1.5 relative border-l-2 border-dashed border-slate-200 pl-3.5 sm:pl-4 ml-1"
+            >
               {serviceNodes.map((node, index) => {
                 const isSelected = activeNode === index;
 
@@ -339,40 +336,29 @@ export default function ServicesGroup() {
                     key={node.id}
                     onClick={() => setActiveNode(index)}
                     onMouseEnter={() => setActiveNode(index)}
-                    className={`reveal-fade-left group relative rounded-xl py-2 sm:py-2.5 px-3 sm:px-3.5 transition-all duration-300 cursor-pointer border overflow-hidden ${
+                    className={`reveal-fade-left group relative rounded-xl py-2 sm:py-2.5 px-3 sm:px-3.5 transition-all duration-300 cursor-pointer overflow-hidden ${
                       isSelected
-                        ? "shadow-md translate-x-1.5 ring-1"
-                        : "bg-white/80 hover:bg-white border-slate-200/90 hover:translate-x-1 hover:shadow-sm"
+                        ? "shadow-md translate-x-1.5 bg-white"
+                        : "bg-white/70 hover:bg-white hover:translate-x-1 hover:shadow-sm"
                     }`}
                     style={{ 
                       transitionDelay: `${index * 80}ms`,
-                      backgroundColor: isSelected ? `${node.hexColor}14` : undefined,
-                      borderColor: isSelected ? node.hexColor : undefined,
-                      boxShadow: isSelected ? `0 8px 22px -4px ${node.hexColor}30` : undefined,
-                      ringColor: isSelected ? `${node.hexColor}40` : undefined
+                      backgroundColor: isSelected ? "#FFFFFF" : undefined,
+                      boxShadow: isSelected ? `0 8px 24px -4px ${node.hexColor}25, 0 2px 8px rgba(0,0,0,0.04)` : undefined
                     }}
                   >
-                    {/* Left Accent Color Indicator Bar on Active/Hover */}
-                    <div 
-                      className={`absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 ${
-                        isSelected ? "opacity-100 scale-y-100" : "opacity-0 scale-y-50 group-hover:opacity-60 group-hover:scale-y-100"
-                      }`}
-                      style={{ backgroundColor: node.hexColor }}
-                    />
-
                     {/* Stepped Node Dot on Timeline */}
                     <div 
                       className={`absolute -left-[21px] sm:-left-[23px] top-3.5 w-3 h-3 rounded-full border-2 border-white transition-all duration-300 shadow-xs ${
-                        isSelected ? "scale-140 ring-3 ring-offset-1" : "scale-100 group-hover:scale-120"
+                        isSelected ? "scale-140 shadow-sm" : "scale-100 group-hover:scale-120"
                       }`}
                       style={{ 
-                        backgroundColor: node.hexColor,
-                        ringColor: `${node.hexColor}50`
+                        backgroundColor: node.hexColor
                       }}
                     />
 
-                    {/* Single Line Header: Group Title + Subtitle + Tags */}
-                    <div className="flex items-center justify-between gap-1.5 mb-0.5">
+                    {/* Single Line Header: Group Title + Subtitle */}
+                    <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5 min-w-0">
                         <span 
                           className="text-[11.5px] sm:text-xs font-black uppercase tracking-wide whitespace-nowrap transition-transform duration-200 group-hover:translate-x-0.5"
@@ -388,16 +374,19 @@ export default function ServicesGroup() {
                         </span>
                       </div>
 
-                      {/* Highlight Tags */}
-                      <div className="hidden md:flex items-center gap-1 shrink-0">
+                      {/* Highlight Tags (Hidden by default, reveal on hover/selected) */}
+                      <div className={`hidden md:flex items-center gap-1 shrink-0 transition-all duration-300 ${
+                        isSelected 
+                          ? "opacity-100 translate-x-0" 
+                          : "opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                      }`}>
                         {node.highlights.slice(0, 2).map((h, i) => (
                           <span 
                             key={i}
                             className="text-[9px] font-bold px-1.5 py-0.5 rounded transition-all duration-300 whitespace-nowrap"
                             style={{
-                              backgroundColor: isSelected ? `${node.hexColor}22` : "#F8FAFC",
-                              color: isSelected ? node.hexColor : "#64748B",
-                              border: `1px solid ${isSelected ? `${node.hexColor}50` : "#E2E8F0"}`
+                              backgroundColor: isSelected ? `${node.hexColor}18` : "#F1F5F9",
+                              color: isSelected ? node.hexColor : "#64748B"
                             }}
                           >
                             {h}
@@ -406,12 +395,22 @@ export default function ServicesGroup() {
                       </div>
                     </div>
 
-                    {/* Concise Description */}
-                    <p className={`text-[11px] leading-snug line-clamp-2 transition-colors duration-200 ${
-                      isSelected ? "text-slate-800" : "text-slate-600 group-hover:text-slate-800"
-                    }`}>
-                      {node.desc}
-                    </p>
+                    {/* Collapsible Details: Revealed smoothly on hover or when selected */}
+                    <div 
+                      className={`grid transition-all duration-300 ease-out ${
+                        isSelected 
+                          ? "grid-rows-[1fr] opacity-100 mt-1.5" 
+                          : "grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-1.5"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className={`text-[11px] leading-snug transition-colors duration-200 ${
+                          isSelected ? "text-slate-800 font-medium" : "text-slate-600 group-hover:text-slate-700"
+                        }`}>
+                          {node.desc}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 );
               })}

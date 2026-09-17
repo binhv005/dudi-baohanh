@@ -174,37 +174,62 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
   return (
     <section 
       id="audit-form" 
-      className="snap-section relative min-h-[100svh] overflow-hidden border-b border-slate-200/90 bg-slate-900 flex items-center py-8 sm:py-12 lg:py-16"
+      className="snap-section relative min-h-[100svh] overflow-hidden border-b border-slate-200/90 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#FAFAFC] text-slate-800 flex items-center py-8 sm:py-12 lg:py-14"
     >
-      {/* Background Image Layer with smooth parallax */}
+      {/* Light Tech Grid Background Pattern */}
       <div 
-        data-parallax
-        data-parallax-speed="0.05"
-        className="absolute -inset-2 will-change-transform pointer-events-none scale-[1.03] origin-center"
+        className="absolute inset-0 pointer-events-none opacity-60"
         style={{
-          backgroundImage: `url('/tải xuống.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundImage: `linear-gradient(to right, rgba(226, 232, 240, 0.8) 1px, transparent 1px), linear-gradient(to bottom, rgba(226, 232, 240, 0.8) 1px, transparent 1px)`,
+          backgroundSize: '28px 28px'
         }}
       />
 
-      {/* Discrete bottom-right corner gradient to conceal any corner mark */}
-      <div className="absolute bottom-0 right-0 w-28 h-16 bg-gradient-to-tl from-slate-900/60 via-slate-900/30 to-transparent pointer-events-none z-0" />
+      {/* Soft Ambient Tech Glow Blobs */}
+      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="internal-scroll-container relative z-10 w-full flex items-center my-auto py-2 sm:py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full flex items-center justify-center md:justify-start">
-        
-          {/* Form Card Positioned Over the Left Consultation Intake Zone - Enlarged & Spacious */}
-          <div className="w-full max-w-[430px] sm:max-w-[480px] lg:max-w-[510px] mx-auto md:mx-0 md:ml-4 lg:ml-8 xl:ml-12">
-            <div className="reveal-scale-up relative bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5.5 lg:p-6 shadow-2xl border border-white/80 ring-1 ring-slate-900/10 text-slate-900 overflow-hidden">
-              
-              {/* Top Mech Accent Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 rounded-b-md shadow-[0_0_8px_#EC1420]" />
-              
-              {/* Tech Side Grips */}
-              <div className="absolute top-5 left-0 w-0.5 h-5 bg-brand-500 rounded-r-sm" />
-              <div className="absolute top-5 right-0 w-0.5 h-5 bg-brand-500 rounded-l-sm" />
+      <div className="internal-scroll-container relative z-10 w-full flex flex-col items-center justify-center my-auto py-4 sm:py-6 lg:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
+          
+          {/* Section Header - Single Line Fit */}
+          <div className="reveal-fade-up text-center max-w-4xl lg:max-w-5xl mx-auto mb-3 sm:mb-5 lg:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-[26px] font-black text-slate-900 tracking-tight leading-tight mb-1">
+              Khảo sát sức khỏe website & tư vấn bảo trì miễn phí
+            </h2>
+            <p className="text-xs sm:text-[13px] text-slate-600 leading-normal font-normal max-w-3xl mx-auto">
+              Kỹ sư DUDI trực tiếp quét lỗi, kiểm tra bảo mật, đo tốc độ và đề xuất phương án tối ưu trong 30 phút.
+            </p>
+          </div>
+
+          {/* 2-Column Responsive Grid: 40% Mascot & 60% Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-8 items-center">
+
+            {/* LEFT: 3D Support Mascot Visual (40%) */}
+            <div className="lg:col-span-4 flex items-center justify-center reveal-fade-right">
+              <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[500px] flex justify-center scale-105 sm:scale-115 lg:scale-120 origin-center">
+                <img
+                  src="/mascot-support.webp"
+                  alt="DUDI Robot hỗ trợ vận hành & kiểm tra website"
+                  className="w-full h-auto object-contain filter drop-shadow-[0_20px_40px_rgba(236,20,32,0.22)] animate-float-slow select-none"
+                  width="520"
+                  height="520"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* RIGHT: Form Card (60%) */}
+            <div className="lg:col-span-6 flex justify-center reveal-fade-left">
+              <div className="w-full">
+                <div className="relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/90 text-slate-900 overflow-hidden">
+                  
+                  {/* Top Mech Accent Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 rounded-b-md shadow-[0_0_8px_#EC1420]" />
+                  
+                  {/* Tech Side Grips */}
+                  <div className="absolute top-5 left-0 w-0.5 h-5 bg-brand-500 rounded-r-sm" />
+                  <div className="absolute top-5 right-0 w-0.5 h-5 bg-brand-500 rounded-l-sm" />
 
               {/* Form Title */}
               <div className="text-center mb-3 pt-1">
@@ -389,8 +414,8 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                     </div>
                   </div>
 
-                  {/* Consent & Security Guarantee */}
-                  <div className="pt-0.5 flex items-center justify-between gap-1">
+                  {/* Consent Checkbox */}
+                  <div className="pt-0.5 flex items-center">
                     <label className="flex items-center gap-1.5 cursor-pointer select-none">
                       <input
                         type="checkbox"
@@ -402,11 +427,6 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         Đồng ý để DUDI liên hệ báo kết quả kiểm tra
                       </span>
                     </label>
-
-                    <span className="inline-flex items-center gap-1 text-[10px] text-slate-500 shrink-0 font-medium">
-                      <Lock className="w-3 h-3 text-emerald-600" />
-                      <span>Bảo mật 100%</span>
-                    </span>
                   </div>
 
                   {/* Error Alert */}
@@ -417,13 +437,12 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                     </div>
                   )}
 
-                  {/* Dual Action Buttons */}
-                  <div className="pt-1 flex items-center gap-2">
-                    {/* Primary Button */}
+                  {/* Submit Action Button */}
+                  <div className="pt-1">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 py-2 px-4 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 hover:from-brand-500 hover:to-rose-500 active:scale-[0.98] text-white text-xs sm:text-sm font-bold shadow-brand hover:shadow-brand-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed h-9 sm:h-10"
+                      className="w-full py-2 px-4 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 hover:from-brand-500 hover:to-rose-500 active:scale-[0.98] text-white text-xs sm:text-sm font-bold shadow-brand hover:shadow-brand-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed h-9 sm:h-10"
                     >
                       {isSubmitting ? (
                         <>
@@ -437,25 +456,16 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         </>
                       )}
                     </button>
-
-                    {/* Secondary Reset Button */}
-                    <button
-                      type="button"
-                      onClick={handleReset}
-                      className="py-2 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 active:scale-[0.98] text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs h-9 sm:h-10"
-                      title="Làm mới form"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
-                      <span className="hidden sm:inline text-[11px]">Làm mới</span>
-                    </button>
                   </div>
 
                 </form>
               )}
 
+                </div>
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </section>

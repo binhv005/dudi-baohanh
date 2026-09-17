@@ -3,6 +3,7 @@ import { Phone, MessageSquare, ArrowUp, Send } from "lucide-react";
 import { COMPANY_INFO } from "../data/maintenanceData";
 import { trackPhoneClick, trackZaloClick, trackCtaClick } from "../utils/tracking";
 import { handleHotlineClick } from "../utils/phoneHelper";
+import { navigateToSection } from "../utils/navigationHelper";
 
 export default function FloatingActions() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -16,17 +17,16 @@ export default function FloatingActions() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigateToSection("");
   };
 
   const scrollToForm = () => {
     trackCtaClick("floating_widget", "Kiểm tra web", "#audit-form");
-    const el = document.getElementById("audit-form");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    navigateToSection("#audit-form");
   };
 
   return (
-    <div className="fixed bottom-4 right-3 sm:bottom-5 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-2.5">
+    <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-[9999] flex flex-col items-end gap-2 sm:gap-2.5 pointer-events-auto">
 
       {/* Zalo Button */}
       <a

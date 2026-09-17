@@ -1,24 +1,18 @@
 import React from "react";
-import { 
-  ArrowRight, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Clock 
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { trackCtaClick } from "../utils/tracking";
+import { navigateToSection } from "../utils/navigationHelper";
 
 export default function Hero({ onSelectPackage }) {
   const handleAuditCTA = () => {
     if (onSelectPackage) onSelectPackage("Chưa rõ");
     trackCtaClick("hero_primary", "Gửi website để kiểm tra", "#audit-form");
-    const el = document.getElementById("audit-form");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    navigateToSection("#audit-form");
   };
 
   const handlePricingCTA = () => {
     trackCtaClick("hero_secondary", "Xem các gói", "#pricing");
-    const el = document.getElementById("pricing");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    navigateToSection("#pricing");
   };
 
   return (
@@ -32,7 +26,7 @@ export default function Hero({ onSelectPackage }) {
         data-parallax-speed="0.05"
         className="absolute -inset-3 will-change-transform pointer-events-none scale-[1.04] origin-center"
         style={{
-          backgroundImage: `url('/tải xuống (4).png')`,
+          backgroundImage: `url('/hero-bg.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -49,12 +43,6 @@ export default function Hero({ onSelectPackage }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-4 sm:py-6">
           {/* Content area with NO background box as requested */}
           <div className="reveal-scale-up max-w-xl text-left">
-            
-            {/* Service Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-white/30 text-white text-[11px] font-bold mb-4 shadow-lg reveal-fade-down backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse shadow-[0_0_8px_#EC1420]" />
-              <span className="tracking-wide">DUDI SOFTWARE • VẬN HÀNH WEBSITE</span>
-            </div>
 
             {/* SINGLE H1 ON ENTIRE LANDING PAGE - High Contrast & Standout */}
             <h1 
@@ -94,7 +82,7 @@ export default function Hero({ onSelectPackage }) {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-6 reveal-fade-up" style={{ transitionDelay: '200ms' }}>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto reveal-fade-up" style={{ transitionDelay: '200ms' }}>
               <button
                 onClick={handleAuditCTA}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-bold text-white bg-brand-600 hover:bg-brand-500 active:scale-[0.98] shadow-[0_4px_20px_rgba(236,20,32,0.5)] hover:shadow-[0_6px_25px_rgba(236,20,32,0.7)] rounded-xl transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 border border-brand-400/40"
@@ -110,29 +98,6 @@ export default function Hero({ onSelectPackage }) {
                 <span>Xem các gói dịch vụ</span>
               </button>
             </div>
-
-            {/* Compact Value Highlights */}
-            <div 
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-4 border-t border-white/20 text-xs sm:text-[13px] text-white font-semibold reveal-fade-up" 
-              style={{ 
-                transitionDelay: '300ms',
-                textShadow: "0 2px 8px rgba(0, 0, 0, 1)"
-              }}
-            >
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
-                <span>Hạn mức minh bạch</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0 drop-shadow-[0_0_8px_rgba(34,211,238,0.7)]" />
-                <span>Backup & Bảo mật</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-amber-400 shrink-0 drop-shadow-[0_0_8px_rgba(251,191,36,0.7)]" />
-                <span>Cam kết SLA</span>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>

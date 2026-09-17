@@ -14,9 +14,11 @@ import FinalCTASection from "./components/FinalCTASection";
 import FooterSection from "./components/FooterSection";
 import FloatingActions from "./components/FloatingActions";
 import { useScrollReveal } from "./hooks/useScrollReveal";
+import { initAnchorTransitions } from "./utils/navigationHelper";
 
 export default function App() {
   const [selectedPackage, setSelectedPackage] = useState("Chưa rõ");
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   // Initialize unified scroll reveal & gentle parallax
   useScrollReveal();
@@ -27,6 +29,28 @@ export default function App() {
       window.history.scrollRestoration = "manual";
     }
     window.scrollTo(0, 0);
+
+    // Initialize global smooth anchor links
+    const cleanupAnchors = initAnchorTransitions();
+
+    // Listen to custom transition events for the top progress indicator
+    const handleTransitionStart = () => setIsTransitioning(true);
+    const handleTransitionEnd = () => setIsTransitioning(false);
+
+    window.addEventListener("page:transition-start", handleTransitionStart);
+    window.addEventListener("page:transition-end", handleTransitionEnd);
+
+    // Turn off initial mount loading indicator after 800ms
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 850);
+
+    return () => {
+      cleanupAnchors();
+      window.removeEventListener("page:transition-start", handleTransitionStart);
+      window.removeEventListener("page:transition-end", handleTransitionEnd);
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleSelectPackage = (pkgName) => {
@@ -34,54 +58,59 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col bg-[#0B1120] text-slate-800 font-sans selection:bg-brand-500 selection:text-white">
-      {/* S01: Header */}
+    <>
+      {/* S01: Header - Fixed at the very top of viewport */}
       <Header onSelectPackage={handleSelectPackage} />
 
-      {/* Main Container with 12 Core Alternating Tech Sections */}
-      <main className="flex-grow">
-        {/* S02: Hero with Single H1 (Light Tech Space with 3D Mascot) */}
-        <Hero onSelectPackage={handleSelectPackage} />
+      {/* Top High-Tech Page Transition & Loading Bar */}
+      {isTransitioning && <div className="page-transition-bar" key={Date.now()} />}
 
-        {/* S03: Dấu hiệu website cần chăm sóc (Deep Tech Slate) */}
-        <SignsSection />
+      <div className="page-fade-in flex flex-col bg-[#0B1120] text-slate-800 font-sans selection:bg-brand-500 selection:text-white min-h-screen">
+        {/* Main Container with 12 Core Alternating Tech Sections */}
+        <main className="flex-grow">
+          {/* S02: Hero with Single H1 (Light Tech Space with 3D Mascot) */}
+          <Hero onSelectPackage={handleSelectPackage} />
 
-        {/* S04: 6 Nhóm công việc DUDI thực hiện (Clean Crisp Light Tech) */}
-        <ServicesGroup />
+          {/* S03: Dấu hiệu website cần chăm sóc (Deep Tech Slate) */}
+          <SignsSection />
 
-        {/* S05: Bảng 3 gói giá & Định mức 15 tiêu chí (Deep Tech Midnight Purple) */}
-        <PricingSection onSelectPackage={handleSelectPackage} />
+          {/* S04: 6 Nhóm công việc DUDI thực hiện (Clean Crisp Light Tech) */}
+          <ServicesGroup />
 
-        {/* S06: Quy chuẩn tính hạn mức (Crisp Light Slate) */}
-        <LimitsSection />
+          {/* S05: Bảng 3 gói giá & Định mức 15 tiêu chí (Deep Tech Midnight Purple) */}
+          <PricingSection onSelectPackage={handleSelectPackage} />
 
-        {/* S07: Quy trình tiếp nhận & xử lý 7 bước (Cyber Dark Slate) */}
-        <ProcessSection />
+          {/* S06: Quy chuẩn tính hạn mức (Crisp Light Slate) */}
+          <LimitsSection />
 
-        {/* S08: Cam kết mức độ SLA & Điều kiện (Crisp Light Tech) */}
-        <SLASection />
+          {/* S07: Quy trình tiếp nhận & xử lý 7 bước (Cyber Dark Slate) */}
+          <ProcessSection />
 
-        {/* S09: Tình huống kỹ thuật thực tế (Deep Tech Navy Slate) */}
-        <CasesSection />
+          {/* S08: Cam kết mức độ SLA & Điều kiện (Crisp Light Tech) */}
+          <SLASection />
 
-        {/* S10: Câu hỏi thường gặp FAQ (Clean Light Tech) */}
-        <FAQSection />
+          {/* S09: Tình huống kỹ thuật thực tế (Deep Tech Navy Slate) */}
+          <CasesSection />
 
-        {/* S11: Form kiểm tra website & Thu thập nhu cầu (Deep Cyber Tech) */}
-        <AuditFormSection
-          selectedPackage={selectedPackage}
-          onSelectPackage={handleSelectPackage}
-        />
+          {/* S10: Câu hỏi thường gặp FAQ (Clean Light Tech) */}
+          <FAQSection />
 
-        {/* S12: CTA cuối trang (Vibrant Tech Gradient) */}
-        <FinalCTASection />
-      </main>
+          {/* S11: Form kiểm tra website & Thu thập nhu cầu (Deep Cyber Tech) */}
+          <AuditFormSection
+            selectedPackage={selectedPackage}
+            onSelectPackage={handleSelectPackage}
+          />
 
-      {/* S13: Footer pháp lý chuẩn xác (Deep Space Slate) */}
-      <FooterSection />
+          {/* S12: CTA cuối trang (Vibrant Tech Gradient) */}
+          <FinalCTASection />
+        </main>
 
-      {/* Quick Contact Widget */}
+        {/* S13: Footer pháp lý chuẩn xác (Deep Space Slate) */}
+        <FooterSection />
+      </div>
+
+      {/* Quick Contact Widget - Pinned fixed to viewport */}
       <FloatingActions />
-    </div>
+    </>
   );
 }

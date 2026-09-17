@@ -161,10 +161,6 @@ export default function ProcessSection() {
           
           {/* Section Header */}
           <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-3 md:mb-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-[11px] font-bold uppercase tracking-wider mb-1.5 shadow-2xs">
-              <Sparkles className="w-3.5 h-3.5 text-brand-600" />
-              <span>QUY TRÌNH VẬN HÀNH CHUẨN KỸ THUẬT</span>
-            </div>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-1.5">
               Quy trình tiếp nhận & xử lý 7 bước minh bạch
             </h2>

@@ -23,10 +23,6 @@ export default function FAQSection() {
           
           {/* Compact Section Header */}
           <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2.5 sm:mb-3.5">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/90 border border-slate-200/90 text-brand-700 text-[10.5px] font-bold uppercase tracking-wider mb-1.5 shadow-2xs backdrop-blur-xs">
-              <HelpCircle className="w-3.5 h-3.5 text-brand-600" />
-              <span>Giải đáp thắc mắc</span>
-            </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mb-1">
               Câu hỏi thường gặp về dịch vụ chăm sóc website
             </h2>

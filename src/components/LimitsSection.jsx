@@ -88,10 +88,6 @@ export default function LimitsSection() {
           
           {/* Section Header */}
           <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2 sm:mb-3">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white border border-slate-200/90 text-slate-700 text-[10.5px] font-bold uppercase tracking-wider mb-1 shadow-2xs">
-              <Calculator className="w-3 h-3 text-brand-600" />
-              <span>QUY CHUẨN ĐO LƯỜNG</span>
-            </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight mb-0.5">
               Cách tính hạn mức công việc hàng tháng
             </h2>

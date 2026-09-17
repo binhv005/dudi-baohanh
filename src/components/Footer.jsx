@@ -16,7 +16,7 @@ export default function Footer() {
               <img
                 src="/logo.webp"
                 alt="Logo DUDI Software"
-                className="w-9 h-9 rounded-lg object-contain"
+                className="w-9 h-9 object-contain"
                 width="36"
                 height="36"
               />

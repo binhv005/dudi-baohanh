@@ -106,6 +106,21 @@ export default function SignsSection() {
     };
   }, []);
 
+  // Window-level mouseup/touchend cleanup to ensure dragging never gets stuck
+  useEffect(() => {
+    const handleGlobalEnd = () => {
+      setIsDragging(false);
+    };
+
+    window.addEventListener("mouseup", handleGlobalEnd);
+    window.addEventListener("touchend", handleGlobalEnd);
+
+    return () => {
+      window.removeEventListener("mouseup", handleGlobalEnd);
+      window.removeEventListener("touchend", handleGlobalEnd);
+    };
+  }, []);
+
   // Manual Jump / Nudge
   const nudgeScroll = (direction) => {
     if (!scrollContainerRef.current) return;
@@ -128,11 +143,30 @@ export default function SignsSection() {
     if (!isDragging || !scrollContainerRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startXRef.current) * 1.5;
+    const walk = (x - startXRef.current) * 1.6;
     scrollContainerRef.current.scrollLeft = scrollLeftRef.current - walk;
   };
 
   const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Touch Swipe to Scroll handlers
+  const handleTouchStart = (e) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    startXRef.current = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    scrollLeftRef.current = scrollContainerRef.current.scrollLeft;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.6;
+    scrollContainerRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  const handleTouchEnd = () => {
     setIsDragging(false);
   };
 
@@ -144,10 +178,6 @@ export default function SignsSection() {
           {/* Section Header & Navigation Controls */}
           <div className="reveal-fade-left flex flex-col md:flex-row md:items-end justify-between gap-3 mb-4">
             <div className="text-left max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-[11px] font-bold uppercase tracking-wider mb-1.5 shadow-2xs">
-                <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
-                <span>ĐÁNH GIÁ HIỆN TRẠNG</span>
-              </div>
               <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-1">
                 Website không hỏng hẳn vẫn cần được theo dõi.
               </h2>
@@ -180,7 +210,7 @@ export default function SignsSection() {
 
           {/* Infinite Seamless Scrolling Conveyor Ribbon */}
           <div 
-            className="relative overflow-hidden py-3"
+            className="reveal-fade-up relative overflow-hidden py-3"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
               setIsHovered(false);
@@ -191,18 +221,19 @@ export default function SignsSection() {
             <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-16 bg-gradient-to-r from-[#F1F5F9] via-[#F1F5F9]/80 to-transparent z-20 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-16 bg-gradient-to-l from-[#F1F5F9] via-[#F1F5F9]/80 to-transparent z-20 pointer-events-none" />
 
-            {/* Continuous Native Scroll Container with Zero-lag GPU Acceleration */}
+            {/* Continuous Native Scroll Container with Zero-lag Touch & Drag */}
             <div
               ref={scrollContainerRef}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
-              className={`flex items-center gap-0 overflow-x-hidden select-none py-2 px-1 ${
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              className={`flex items-center gap-0 overflow-x-auto select-none py-2 px-1 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
                 isDragging ? "cursor-grabbing" : "cursor-grab"
               }`}
               style={{
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
                 WebkitOverflowScrolling: "touch"
               }}
             >

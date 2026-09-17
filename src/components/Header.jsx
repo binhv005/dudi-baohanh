@@ -3,6 +3,7 @@ import { Menu, X, ArrowRight, Phone, MessageSquare, ShieldCheck } from "lucide-r
 import { COMPANY_INFO } from "../data/maintenanceData";
 import { trackCtaClick, trackPhoneClick, trackZaloClick } from "../utils/tracking";
 import { handleHotlineClick } from "../utils/phoneHelper";
+import { navigateToSection } from "../utils/navigationHelper";
 
 export default function Header({ onSelectPackage }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,8 +11,10 @@ export default function Header({ onSelectPackage }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+      setIsScrolled(scrollY > 15);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -28,25 +31,24 @@ export default function Header({ onSelectPackage }) {
   const handleNavClick = (href, name) => {
     setMobileMenuOpen(false);
     trackCtaClick("header_nav", name, href);
+    navigateToSection(href);
   };
 
   const handleAuditClick = () => {
     setMobileMenuOpen(false);
     if (onSelectPackage) onSelectPackage("Chưa rõ");
     trackCtaClick("header_primary", "Gửi website để kiểm tra", "#audit-form");
-    const el = document.getElementById("audit-form");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    navigateToSection("#audit-form");
   };
 
   return (
     <header
       id="header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800/80 py-2.5"
-          : "bg-gradient-to-b from-slate-950/70 via-slate-950/30 to-transparent border-b border-white/10 py-3.5 sm:py-4"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        isScrolled
+          ? "bg-slate-950/95 backdrop-blur-md shadow-xl border-b border-slate-800/90 py-2.5"
+          : "bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-transparent border-b border-white/10 py-3.5 sm:py-4"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -59,7 +61,7 @@ export default function Header({ onSelectPackage }) {
             <img
               src="/logo.webp"
               alt="Logo DUDI Software"
-              className="w-9 h-9 rounded-lg object-contain shadow-xs group-hover:scale-105 transition-transform duration-200"
+              className="w-9 h-9 object-contain shadow-xs group-hover:scale-105 transition-transform duration-200"
               width="36"
               height="36"
             />

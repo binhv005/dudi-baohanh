@@ -8,12 +8,11 @@ export default function FooterSection() {
   const currentYear = 2026;
 
   return (
-    <footer id="footer" className="snap-section scroll-reveal-section snap-section-footer bg-[#0B0E14] text-slate-400 text-xs border-t border-slate-850 relative">
-      <div className="internal-scroll-container flex flex-col justify-center min-h-[100svh]">
-        <div className="reveal-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 w-full">
+    <footer id="footer" className="bg-[#0B0E14] text-slate-400 text-xs border-t border-slate-850 relative pt-12 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
           {/* Main 3-Column Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10">
+          <div className="reveal-fade-up grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10">
 
             {/* Column 1: Company Logo & Identity Box */}
             <div className="md:col-span-5 space-y-4">
@@ -22,7 +21,7 @@ export default function FooterSection() {
                 <img
                   src="/logo.webp"
                   alt="Logo DUDI Software"
-                  className="w-8 h-8 rounded-lg object-contain shadow-xs"
+                  className="w-8 h-8 object-contain shadow-xs"
                   width="32"
                   height="32"
                 />
@@ -173,8 +172,6 @@ export default function FooterSection() {
           </div>
 
         </div>
-      </div>
-    </footer>
-  );
+      </footer>
+    );
 }
-
