@@ -79,33 +79,33 @@ export default function ServicesGroup() {
   return (
     <section id="services" className="snap-section bg-white border-b border-slate-200/80 relative overflow-hidden">
       <div className="internal-scroll-container flex flex-col justify-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
+        <div className="max-w-7xl 2xl:max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full flex flex-col justify-center">
           
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-3 sm:mb-4">
-            <h2 className="text-[clamp(1.15rem,2vw,1.65rem)] font-extrabold text-slate-900 tracking-tight mb-0.5">
+          <div className="reveal-fade-up text-center max-w-2xl 2xl:max-w-3xl mx-auto mb-4 sm:mb-6 2xl:mb-8">
+            <h2 className="text-[clamp(1.3rem,2.2vw,2.15rem)] font-extrabold text-slate-900 tracking-tight mb-1">
               6 nhóm công việc DUDI thực hiện hằng tháng
             </h2>
-            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-slate-600 leading-normal max-w-lg mx-auto">
+            <p className="text-[clamp(0.82rem,0.95vw,1.05rem)] text-slate-600 leading-normal max-w-xl mx-auto font-normal">
               Hệ sinh thái dịch vụ chuẩn hóa bài bản, đảm bảo website luôn được bảo vệ và vận hành ổn định.
             </p>
           </div>
 
           {/* MAIN LAYOUT: CLEAN 3D MASCOT (LEFT) + SERVICE GROUPS LIST (RIGHT) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center mb-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 2xl:gap-14 items-center mb-4">
             
-            {/* LEFT: 3D DUDI MASCOT ILLUSTRATION (+30% larger) */}
+            {/* LEFT: 3D DUDI MASCOT ILLUSTRATION */}
             <div className="lg:col-span-5 flex items-center justify-center relative reveal-scale-up">
-              <div className="relative flex items-center justify-center w-full max-w-[clamp(320px,42vw,540px)] py-1 sm:py-2">
+              <div className="relative flex items-center justify-center w-full max-w-[clamp(340px,44vw,620px)] py-1 sm:py-2">
                 {/* Soft subtle glow behind mascot */}
-                <div className="absolute inset-0 m-auto w-72 h-72 sm:w-80 sm:h-80 bg-gradient-to-tr from-brand-500/20 via-rose-500/15 to-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute inset-0 m-auto w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-tr from-brand-500/20 via-rose-500/15 to-orange-500/10 rounded-full blur-3xl pointer-events-none" />
                 
                 {/* Floating Mascot */}
                 <div className="relative z-10 flex flex-col items-center animate-mascot-float w-full">
                   <img
                     src="/faq-mascot.webp"
                     alt="Linh vật chăm sóc website DUDI"
-                    className="w-full h-auto max-h-[clamp(300px,45vh,480px)] object-contain filter drop-shadow-[0_20px_35px_rgba(236,20,32,0.22)] transition-transform duration-300 hover:scale-105 cursor-pointer select-none"
+                    className="w-full h-auto max-h-[clamp(320px,46vh,540px)] object-contain filter drop-shadow-[0_24px_40px_rgba(236,20,32,0.22)] transition-transform duration-300 hover:scale-105 cursor-pointer select-none"
                     loading="lazy"
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function ServicesGroup() {
             {/* RIGHT: CONNECTED STEPPED TIMELINE LIST */}
             <div 
               onMouseLeave={() => setActiveNode(null)}
-              className="lg:col-span-7 space-y-1 sm:space-y-1.5 relative border-l-2 border-dashed border-slate-200 pl-3.5 sm:pl-4 ml-1"
+              className="lg:col-span-7 space-y-2 sm:space-y-2.5 2xl:space-y-3.5 relative border-l-2 border-dashed border-slate-200 pl-4 sm:pl-5 2xl:pl-6 ml-1"
             >
               {serviceNodes.map((node, index) => {
                 const isSelected = activeNode === index;
@@ -125,10 +125,10 @@ export default function ServicesGroup() {
                     key={node.id}
                     onClick={() => setActiveNode(index)}
                     onMouseEnter={() => setActiveNode(index)}
-                    className={`reveal-fade-left group relative rounded-xl py-1.5 sm:py-2 px-3 sm:px-3.5 transition-all duration-300 cursor-pointer overflow-hidden ${
+                    className={`reveal-fade-left group relative rounded-xl 2xl:rounded-2xl py-2 sm:py-2.5 2xl:py-3.5 px-3.5 sm:px-4 2xl:px-5 transition-all duration-300 cursor-pointer overflow-hidden border ${
                       isSelected
-                        ? "shadow-md translate-x-1.5 bg-white"
-                        : "bg-white/70 hover:bg-white hover:translate-x-1 hover:shadow-sm"
+                        ? "shadow-md translate-x-1.5 bg-white border-slate-200/90"
+                        : "bg-white/70 hover:bg-white hover:translate-x-1 hover:shadow-sm border-transparent hover:border-slate-200/70"
                     }`}
                     style={{ 
                       transitionDelay: `${index * 80}ms`,

@@ -84,57 +84,57 @@ export default function LimitsSection() {
   return (
     <section id="limits" className="snap-section bg-[#B91C1C] text-white border-b border-red-800 relative overflow-hidden">
       <div className="internal-scroll-container flex flex-col justify-center relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
+        <div className="max-w-7xl 2xl:max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full flex flex-col justify-center">
           
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2.5 sm:mb-3.5">
-            <h2 className="text-[clamp(1.15rem,2.2vw,1.65rem)] font-black text-white tracking-tight mb-1 drop-shadow-xs">
+          <div className="reveal-fade-up text-center max-w-2xl 2xl:max-w-3xl mx-auto mb-4 sm:mb-5 2xl:mb-6">
+            <h2 className="text-[clamp(1.3rem,2.2vw,2.15rem)] font-black text-white tracking-tight mb-1 drop-shadow-xs">
               Cách tính hạn mức công việc hàng tháng
             </h2>
-            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-white/90 leading-snug font-medium">
+            <p className="text-[clamp(0.82rem,0.95vw,1.05rem)] text-white/90 leading-snug font-medium max-w-xl mx-auto">
               DUDI công khai cách tính minh bạch để hai bên luôn chủ động và tối ưu hiệu quả vận hành.
             </p>
           </div>
 
           {/* 6 Compact Crisp Bento Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3" data-reveal-container>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 2xl:gap-5" data-reveal-container>
             {limitsData.map((item, index) => {
               const Icon = item.icon;
               return (
                 <div
                   key={index}
-                  className="reveal-stagger-item group relative bg-white text-slate-800 rounded-xl p-[clamp(0.65rem,1.1vw,0.95rem)] border border-white/90 shadow-md hover:shadow-xl transition-all duration-200 flex flex-col justify-between"
+                  className="reveal-stagger-item group relative bg-white text-slate-800 rounded-xl 2xl:rounded-2xl p-[clamp(0.85rem,1.3vw,1.25rem)] border border-white/90 shadow-md hover:shadow-xl transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     {/* Top Bar: Icon + Number badge */}
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg border flex items-center justify-center ${item.bgLight}`}>
-                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2]" />
+                    <div className="flex items-center justify-between mb-2">
+                      <div className={`w-8 h-8 2xl:w-9 2xl:h-9 rounded-lg border flex items-center justify-center ${item.bgLight}`}>
+                        <Icon className="w-4 h-4 2xl:w-4.5 2xl:h-4.5 stroke-[2]" />
                       </div>
-                      <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 border border-slate-200/70">
+                      <span className="text-[10.5px] 2xl:text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200/70">
                         {item.number}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-[clamp(11px,0.85vw,12.5px)] font-bold text-slate-900 uppercase tracking-tight mb-1 group-hover:text-brand-600 transition-colors">
+                    <h3 className="text-xs sm:text-[13px] 2xl:text-[14.5px] font-bold text-slate-900 uppercase tracking-tight mb-1.5 group-hover:text-brand-600 transition-colors">
                       {item.tag}
                     </h3>
 
                     {/* Shortened concise summary */}
-                    <p className="text-[clamp(10.5px,0.8vw,11.5px)] text-slate-600 leading-snug mb-2">
+                    <p className="text-[11.5px] sm:text-xs 2xl:text-[13px] text-slate-600 leading-snug mb-2.5">
                       {item.summary}
                     </p>
                   </div>
 
                   {/* Bottom Highlight Pills */}
-                  <div className="pt-1.5 border-t border-slate-100 flex flex-wrap gap-1">
+                  <div className="pt-2 border-t border-slate-100 flex flex-wrap gap-1.5">
                     {item.points.map((pt, pIdx) => (
                       <span 
                         key={pIdx}
-                        className="inline-flex items-center gap-0.5 text-[clamp(9.5px,0.75vw,10.5px)] font-medium text-slate-700 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded"
+                        className="inline-flex items-center gap-1 text-[10.5px] sm:text-[11px] 2xl:text-[12px] font-medium text-slate-700 bg-slate-50 border border-slate-200/80 px-2 py-0.5 rounded-md"
                       >
-                        <Check className="w-2.5 h-2.5 text-emerald-500 stroke-[2.5]" />
+                        <Check className="w-3 h-3 text-emerald-500 stroke-[2.5]" />
                         <span>{pt}</span>
                       </span>
                     ))}
@@ -145,9 +145,9 @@ export default function LimitsSection() {
           </div>
 
           {/* Bottom Note */}
-          <div className="reveal-fade-up text-center mt-2.5 sm:mt-3">
-            <div className="inline-flex items-center gap-1.5 text-[clamp(10px,0.78vw,11px)] text-white bg-black/25 backdrop-blur-xs px-3.5 py-1 rounded-full border border-white/25 shadow-2xs font-medium">
-              <Info className="w-3.5 h-3.5 text-white/90 shrink-0" />
+          <div className="reveal-fade-up text-center mt-3 sm:mt-4">
+            <div className="inline-flex items-center gap-2 text-xs 2xl:text-[13px] text-white bg-black/25 backdrop-blur-xs px-4 py-1.5 rounded-full border border-white/25 shadow-2xs font-medium">
+              <Info className="w-4 h-4 text-white/90 shrink-0" />
               <span>Toàn bộ hạn mức công việc được làm mới (reset) vào đầu chu kỳ mỗi tháng và không cộng dồn.</span>
             </div>
           </div>

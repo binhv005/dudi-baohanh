@@ -17,10 +17,10 @@ export default function FinalCTASection() {
       className="snap-section bg-[#F8FAFC] text-slate-800 border-b border-slate-200/90 relative overflow-hidden flex flex-col justify-center"
     >
       {/* Outer wrapper giving generous side spacing */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 w-full relative z-10">
+      <div className="max-w-6xl 2xl:max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-10 2xl:px-12 w-full relative z-10">
         
         {/* Main Framed Card with decorative sample pattern at corners */}
-        <div className="reveal-scale-up relative bg-[#FFF9F6] border border-orange-200/80 rounded-3xl sm:rounded-[36px] shadow-[0_15px_45px_-10px_rgba(15,23,42,0.08),0_0_30px_rgba(249,115,22,0.08)] overflow-hidden py-[clamp(2rem,4vw,3.25rem)] px-4 sm:px-8 text-center">
+        <div className="reveal-scale-up relative bg-[#FFF9F6] border border-orange-200/80 rounded-3xl sm:rounded-[36px] 2xl:rounded-[44px] shadow-[0_15px_45px_-10px_rgba(15,23,42,0.08),0_0_30px_rgba(249,115,22,0.08)] overflow-hidden py-[clamp(2rem,4vw,3.25rem)] 2xl:py-16 px-4 sm:px-8 2xl:px-14 text-center">
           
           {/* Subtle Grid Pattern Overlay matching reference sample */}
           <div 
@@ -36,7 +36,7 @@ export default function FinalCTASection() {
              ========================================================================= */}
 
           {/* 1. TOP-LEFT CORNER: Layered Organic Fluid Blobs */}
-          <div className="absolute top-0 left-0 w-[clamp(80px,14vw,200px)] h-[clamp(80px,14vw,200px)] pointer-events-none select-none z-0">
+          <div className="absolute top-0 left-0 w-[clamp(80px,14vw,200px)] 2xl:w-[240px] h-[clamp(80px,14vw,200px)] 2xl:h-[240px] pointer-events-none select-none z-0">
             <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
               <path
                 d="M0 0 L140 0 C120 45 105 70 70 85 C35 100 20 135 0 160 Z"
@@ -61,7 +61,7 @@ export default function FinalCTASection() {
           </div>
 
           {/* 2. TOP-RIGHT CORNER */}
-          <div className="absolute top-0 right-0 w-[clamp(80px,14vw,200px)] h-[clamp(80px,14vw,200px)] pointer-events-none select-none z-0">
+          <div className="absolute top-0 right-0 w-[clamp(80px,14vw,200px)] 2xl:w-[240px] h-[clamp(80px,14vw,200px)] 2xl:h-[240px] pointer-events-none select-none z-0">
             <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
               <path
                 d="M240 0 L130 0 C145 35 180 50 170 85 C160 120 195 150 240 165 Z"
@@ -88,7 +88,7 @@ export default function FinalCTASection() {
           </div>
 
           {/* 3. BOTTOM-LEFT CORNER */}
-          <div className="absolute bottom-0 left-0 w-[clamp(80px,14vw,200px)] h-[clamp(80px,14vw,200px)] pointer-events-none select-none z-0">
+          <div className="absolute bottom-0 left-0 w-[clamp(80px,14vw,200px)] 2xl:w-[240px] h-[clamp(80px,14vw,200px)] 2xl:h-[240px] pointer-events-none select-none z-0">
             <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
               <path
                 d="M0 240 L0 120 C35 135 60 165 50 195 C40 225 70 235 90 240 Z"
@@ -114,7 +114,7 @@ export default function FinalCTASection() {
           </div>
 
           {/* 4. BOTTOM-RIGHT CORNER */}
-          <div className="absolute bottom-0 right-0 w-[clamp(80px,14vw,200px)] h-[clamp(80px,14vw,200px)] pointer-events-none select-none z-0">
+          <div className="absolute bottom-0 right-0 w-[clamp(80px,14vw,200px)] 2xl:w-[240px] h-[clamp(80px,14vw,200px)] 2xl:h-[240px] pointer-events-none select-none z-0">
             <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
               <path
                 d="M240 240 L130 240 C145 205 170 190 205 175 C230 160 238 135 240 120 Z"
@@ -145,15 +145,15 @@ export default function FinalCTASection() {
           {/* =========================================================================
               CENTER CARD CONTENT
              ========================================================================= */}
-          <div className="relative z-10 max-w-2xl mx-auto">
+          <div className="relative z-10 max-w-2xl 2xl:max-w-3xl mx-auto">
             
             {/* Main Headline */}
-            <h2 className="text-[clamp(1.35rem,2.8vw,2.4rem)] font-black text-slate-900 tracking-tight leading-[1.2] mb-2 sm:mb-3">
+            <h2 className="text-[clamp(1.35rem,2.8vw,2.4rem)] 2xl:text-[2.65rem] font-black text-slate-900 tracking-tight leading-[1.2] mb-2 sm:mb-3 2xl:mb-4">
               Website của bạn đang được ai theo dõi?
             </h2>
 
             {/* Subheadline */}
-            <p className="text-[clamp(0.75rem,1vw,0.95rem)] text-slate-600 font-medium max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-[clamp(0.75rem,1vw,0.95rem)] 2xl:text-[1.1rem] text-slate-600 font-medium max-w-xl 2xl:max-w-2xl mx-auto mb-6 sm:mb-8 2xl:mb-10 leading-relaxed">
               Cho DUDI biết tình trạng website để bên mình kiểm tra và đề xuất gói phù hợp từ{" "}
               <span className="font-extrabold text-brand-600">
                 500.000đ/tháng
@@ -161,18 +161,18 @@ export default function FinalCTASection() {
             </p>
 
             {/* Primary High-Impact CTA Button */}
-            <div className="mb-5 sm:mb-7 flex justify-center">
+            <div className="mb-5 sm:mb-7 2xl:mb-8 flex justify-center">
               <button
                 onClick={handleScrollToForm}
-                className="inline-flex items-center justify-center gap-2 sm:gap-2.5 px-[clamp(1.25rem,2.5vw,2rem)] py-[clamp(0.75rem,1.5vh,0.95rem)] text-[clamp(11.5px,0.9vw,14px)] font-bold text-white bg-brand-500 hover:bg-brand-600 active:scale-[0.98] shadow-[0_10px_30px_rgba(236,20,32,0.35)] hover:shadow-[0_14px_38px_rgba(236,20,32,0.5)] rounded-2xl transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 border border-brand-400/40 whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 sm:gap-2.5 2xl:gap-3 px-[clamp(1.25rem,2.5vw,2rem)] 2xl:px-10 py-[clamp(0.75rem,1.5vh,0.95rem)] 2xl:py-4 text-[clamp(11.5px,0.9vw,14px)] 2xl:text-base font-bold text-white bg-brand-500 hover:bg-brand-600 active:scale-[0.98] shadow-[0_10px_30px_rgba(236,20,32,0.35)] hover:shadow-[0_14px_38px_rgba(236,20,32,0.5)] rounded-2xl 2xl:rounded-3xl transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 border border-brand-400/40 whitespace-nowrap"
               >
                 <span>Cho DUDI biết tình trạng website của bạn</span>
-                <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+                <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 2xl:w-5 2xl:h-5" />
               </button>
             </div>
 
             {/* Secondary Direct Contact Actions */}
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 text-xs">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 2xl:gap-4 text-xs">
               <a
                 href={COMPANY_INFO.hotlineHref}
                 onClick={(e) => {
@@ -180,9 +180,9 @@ export default function FinalCTASection() {
                   handleHotlineClick(e, COMPANY_INFO.hotlineFormatted, COMPANY_INFO.hotline);
                 }}
                 title="Gọi Hotline hoặc click để sao chép"
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all cursor-pointer active:scale-95 text-[clamp(11px,0.8vw,12.5px)]"
+                className="inline-flex items-center gap-1.5 sm:gap-2 2xl:gap-2.5 px-3 sm:px-4 2xl:px-5 py-2 sm:py-2.5 2xl:py-3 rounded-xl 2xl:rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-semibold border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all cursor-pointer active:scale-95 text-[clamp(11px,0.8vw,12.5px)] 2xl:text-sm"
               >
-                <Phone className="w-3.5 h-3.5 text-brand-500" />
+                <Phone className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-brand-500" />
                 <span>Hotline: {COMPANY_INFO.hotlineFormatted}</span>
               </a>
 
@@ -191,9 +191,9 @@ export default function FinalCTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackZaloClick("final_cta")}
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-blue-50/90 hover:bg-blue-100/90 text-blue-700 font-semibold border border-blue-200/80 shadow-2xs hover:shadow-xs transition-all active:scale-95 text-[clamp(11px,0.8vw,12.5px)]"
+                className="inline-flex items-center gap-1.5 sm:gap-2 2xl:gap-2.5 px-3 sm:px-4 2xl:px-5 py-2 sm:py-2.5 2xl:py-3 rounded-xl 2xl:rounded-2xl bg-blue-50/90 hover:bg-blue-100/90 text-blue-700 font-semibold border border-blue-200/80 shadow-2xs hover:shadow-xs transition-all active:scale-95 text-[clamp(11px,0.8vw,12.5px)] 2xl:text-sm"
               >
-                <MessageSquare className="w-3.5 h-3.5 text-blue-600" />
+                <MessageSquare className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-blue-600" />
                 <span>Chat Zalo tư vấn trực tiếp</span>
               </a>
             </div>

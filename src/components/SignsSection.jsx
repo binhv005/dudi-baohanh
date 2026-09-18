@@ -173,44 +173,44 @@ export default function SignsSection() {
   return (
     <section id="signs" className="snap-section bg-[#F1F5F9] text-slate-800 border-b border-slate-200/80 relative overflow-hidden">
       <div className="internal-scroll-container flex flex-col justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
+        <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full flex flex-col justify-center">
           
           {/* Section Header & Navigation Controls */}
-          <div className="reveal-fade-left flex flex-col md:flex-row md:items-end justify-between gap-3 mb-3 sm:mb-4">
-            <div className="text-left max-w-2xl">
-              <h2 className="text-[clamp(1.2rem,2.2vw,1.75rem)] font-extrabold text-slate-900 tracking-tight mb-1">
+          <div className="reveal-fade-left flex flex-col md:flex-row md:items-end justify-between gap-3 mb-4 sm:mb-5 2xl:mb-6">
+            <div className="text-left max-w-2xl 2xl:max-w-3xl">
+              <h2 className="text-[clamp(1.3rem,2.2vw,2.15rem)] font-extrabold text-slate-900 tracking-tight mb-1">
                 Website không hỏng hẳn vẫn cần được theo dõi.
               </h2>
-              <p className="text-[clamp(0.75rem,0.95vw,0.875rem)] text-slate-600 leading-normal">
+              <p className="text-[clamp(0.82rem,0.95vw,1.05rem)] text-slate-600 leading-normal font-normal">
                 Nhiều rủi ro kỹ thuật diễn ra âm thầm, làm suy giảm trải nghiệm người dùng và thất thoát cơ hội bán hàng.
               </p>
             </div>
 
             {/* Quick Navigation Chevron Buttons */}
-            <div className="flex items-center gap-1.5 self-end md:self-auto shrink-0">
+            <div className="flex items-center gap-2 self-end md:self-auto shrink-0">
               <button
                 type="button"
                 onClick={() => nudgeScroll("left")}
                 aria-label="Lướt sang trái"
-                className="w-8 h-8 rounded-full bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-300 text-slate-700 hover:text-amber-600 flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
+                className="w-8.5 h-8.5 2xl:w-10 2xl:h-10 rounded-full bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-300 text-slate-700 hover:text-amber-600 flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-4 h-4 2xl:w-5 2xl:h-5" />
               </button>
 
               <button
                 type="button"
                 onClick={() => nudgeScroll("right")}
                 aria-label="Lướt sang phải"
-                className="w-8 h-8 rounded-full bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-300 text-slate-700 hover:text-amber-600 flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
+                className="w-8.5 h-8.5 2xl:w-10 2xl:h-10 rounded-full bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-300 text-slate-700 hover:text-amber-600 flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 2xl:w-5 2xl:h-5" />
               </button>
             </div>
           </div>
 
           {/* Infinite Seamless Scrolling Conveyor Ribbon */}
           <div 
-            className="reveal-fade-up relative overflow-hidden py-2"
+            className="reveal-fade-up relative overflow-hidden py-2.5"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
               setIsHovered(false);
@@ -218,8 +218,8 @@ export default function SignsSection() {
             }}
           >
             {/* Left & Right ambient fade gradients for smooth conveyor visual */}
-            <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-16 bg-gradient-to-r from-[#F1F5F9] via-[#F1F5F9]/80 to-transparent z-20 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-16 bg-gradient-to-l from-[#F1F5F9] via-[#F1F5F9]/80 to-transparent z-20 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#F1F5F9] via-[#F1F5F9]/80 to-transparent pointer-events-none z-20" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#F1F5F9] via-[#F1F5F9]/80 to-transparent pointer-events-none z-20" />
 
             {/* Continuous Native Scroll Container with Zero-lag Touch & Drag */}
             <div
@@ -246,7 +246,7 @@ export default function SignsSection() {
                     {/* Sliding Interactive Card */}
                     <div 
                       onClick={() => setActiveCardId(isSelected ? null : uniqueKey)}
-                      className={`w-[clamp(250px,21vw,290px)] shrink-0 rounded-2xl p-[clamp(0.875rem,1.4vw,1.25rem)] text-center flex flex-col justify-between transition-all duration-300 min-h-[clamp(235px,25vh,258px)] cursor-pointer ${
+                      className={`w-[clamp(260px,21vw,330px)] shrink-0 rounded-2xl p-[clamp(1rem,1.4vw,1.4rem)] text-center flex flex-col justify-between transition-all duration-300 min-h-[clamp(240px,26vh,280px)] cursor-pointer ${
                         isSelected 
                           ? "bg-white text-slate-800 shadow-[0_12px_32px_rgba(245,158,11,0.2)] border-2 border-amber-400 scale-[1.03] -translate-y-2"
                           : "bg-white text-slate-700 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(245,158,11,0.15)] border border-slate-200/90 hover:-translate-y-1.5 hover:border-amber-300 hover:bg-amber-50/20"
@@ -254,28 +254,28 @@ export default function SignsSection() {
                     >
                       <div>
                         {/* Outline Icon in Golden-Amber */}
-                        <div className={`w-10 h-10 sm:w-11 sm:h-11 mx-auto rounded-xl flex items-center justify-center mb-2 transition-all duration-300 ${
+                        <div className={`w-10 h-10 sm:w-11 sm:h-11 2xl:w-12 2xl:h-12 mx-auto rounded-xl flex items-center justify-center mb-2 transition-all duration-300 ${
                           isSelected ? "bg-amber-100/70 scale-110 shadow-xs" : "bg-slate-50"
                         }`}>
                           {getPlainCardIcon(sign.id)}
                         </div>
 
                         {/* BOLD UPPERCASE KEYWORD */}
-                        <h3 className={`text-xs sm:text-[13px] font-black uppercase tracking-wider mb-1 transition-colors ${
+                        <h3 className={`text-xs sm:text-[13px] 2xl:text-[14px] font-black uppercase tracking-wider mb-1.5 transition-colors ${
                           isSelected ? "text-amber-600" : "text-slate-900"
                         }`}>
                           {getShortKeyword(sign.id)}
                         </h3>
 
                         {/* Problem Description */}
-                        <p className="text-[11.5px] sm:text-xs text-slate-600 font-medium leading-relaxed mb-2">
+                        <p className="text-[11.5px] sm:text-xs 2xl:text-[13px] text-slate-600 font-medium leading-relaxed mb-2.5">
                           {sign.description}
                         </p>
                       </div>
 
                       {/* Consequence / Impact Note */}
-                      <div className="pt-2 border-t border-slate-100 text-[10.5px] sm:text-[11px] text-slate-700 text-left bg-rose-50/70 p-2 sm:p-2.5 rounded-xl border border-rose-100/90">
-                        <span className="font-bold text-rose-600 block mb-0.5 text-[10px] uppercase tracking-wide">
+                      <div className="pt-2 border-t border-slate-100 text-[10.5px] sm:text-[11px] 2xl:text-[12px] text-slate-700 text-left bg-rose-50/70 p-2.5 rounded-xl border border-rose-100/90">
+                        <span className="font-bold text-rose-600 block mb-0.5 text-[10px] 2xl:text-[11px] uppercase tracking-wide">
                           Hệ quả:
                         </span>
                         <span className="leading-snug block text-slate-700">
