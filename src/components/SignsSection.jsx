@@ -172,16 +172,16 @@ export default function SignsSection() {
 
   return (
     <section id="signs" className="snap-section bg-[#F1F5F9] text-slate-800 border-b border-slate-200/80 relative overflow-hidden">
-      <div className="internal-scroll-container flex flex-col justify-center min-h-[100svh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-5 sm:py-7 flex flex-col justify-center h-full">
+      <div className="internal-scroll-container flex flex-col justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
           
           {/* Section Header & Navigation Controls */}
-          <div className="reveal-fade-left flex flex-col md:flex-row md:items-end justify-between gap-3 mb-4">
+          <div className="reveal-fade-left flex flex-col md:flex-row md:items-end justify-between gap-3 mb-3 sm:mb-4">
             <div className="text-left max-w-2xl">
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-1">
+              <h2 className="text-[clamp(1.2rem,2.2vw,1.75rem)] font-extrabold text-slate-900 tracking-tight mb-1">
                 Website không hỏng hẳn vẫn cần được theo dõi.
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-normal">
+              <p className="text-[clamp(0.75rem,0.95vw,0.875rem)] text-slate-600 leading-normal">
                 Nhiều rủi ro kỹ thuật diễn ra âm thầm, làm suy giảm trải nghiệm người dùng và thất thoát cơ hội bán hàng.
               </p>
             </div>
@@ -210,7 +210,7 @@ export default function SignsSection() {
 
           {/* Infinite Seamless Scrolling Conveyor Ribbon */}
           <div 
-            className="reveal-fade-up relative overflow-hidden py-3"
+            className="reveal-fade-up relative overflow-hidden py-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
               setIsHovered(false);
@@ -246,7 +246,7 @@ export default function SignsSection() {
                     {/* Sliding Interactive Card */}
                     <div 
                       onClick={() => setActiveCardId(isSelected ? null : uniqueKey)}
-                      className={`w-[265px] sm:w-[290px] shrink-0 rounded-2xl p-4 sm:p-5 text-center flex flex-col justify-between transition-all duration-300 min-h-[245px] sm:min-h-[258px] cursor-pointer ${
+                      className={`w-[clamp(250px,21vw,290px)] shrink-0 rounded-2xl p-[clamp(0.875rem,1.4vw,1.25rem)] text-center flex flex-col justify-between transition-all duration-300 min-h-[clamp(235px,25vh,258px)] cursor-pointer ${
                         isSelected 
                           ? "bg-white text-slate-800 shadow-[0_12px_32px_rgba(245,158,11,0.2)] border-2 border-amber-400 scale-[1.03] -translate-y-2"
                           : "bg-white text-slate-700 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(245,158,11,0.15)] border border-slate-200/90 hover:-translate-y-1.5 hover:border-amber-300 hover:bg-amber-50/20"
@@ -254,21 +254,21 @@ export default function SignsSection() {
                     >
                       <div>
                         {/* Outline Icon in Golden-Amber */}
-                        <div className={`w-11 h-11 mx-auto rounded-xl flex items-center justify-center mb-2.5 transition-all duration-300 ${
+                        <div className={`w-10 h-10 sm:w-11 sm:h-11 mx-auto rounded-xl flex items-center justify-center mb-2 transition-all duration-300 ${
                           isSelected ? "bg-amber-100/70 scale-110 shadow-xs" : "bg-slate-50"
                         }`}>
                           {getPlainCardIcon(sign.id)}
                         </div>
 
                         {/* BOLD UPPERCASE KEYWORD */}
-                        <h3 className={`text-xs sm:text-[13px] font-black uppercase tracking-wider mb-1.5 transition-colors ${
+                        <h3 className={`text-xs sm:text-[13px] font-black uppercase tracking-wider mb-1 transition-colors ${
                           isSelected ? "text-amber-600" : "text-slate-900"
                         }`}>
                           {getShortKeyword(sign.id)}
                         </h3>
 
                         {/* Problem Description */}
-                        <p className="text-[11.5px] sm:text-xs text-slate-600 font-medium leading-relaxed mb-2.5">
+                        <p className="text-[11.5px] sm:text-xs text-slate-600 font-medium leading-relaxed mb-2">
                           {sign.description}
                         </p>
                       </div>

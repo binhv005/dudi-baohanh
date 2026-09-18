@@ -156,24 +156,24 @@ export default function ProcessSection() {
 
   return (
     <section id="process" className="snap-section bg-white text-slate-800 border-b border-slate-200/90 relative overflow-hidden">
-      <div className="internal-scroll-container flex flex-col justify-center min-h-[100svh] relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-5 sm:py-7 flex flex-col justify-center h-full">
+      <div className="internal-scroll-container flex flex-col justify-center relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col justify-center">
           
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-3 md:mb-4">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-1.5">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2.5 sm:mb-3.5">
+            <h2 className="text-[clamp(1.2rem,2.2vw,1.75rem)] font-extrabold text-slate-900 tracking-tight mb-1">
               Quy trình tiếp nhận & xử lý 7 bước minh bạch
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl mx-auto">
+            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-slate-600 leading-relaxed max-w-xl mx-auto">
               Mọi yêu cầu kỹ thuật đều được kiểm soát nghiêm ngặt từ khâu tiếp nhận, đánh giá SLA, sao lưu an toàn đến nghiệm thu và báo cáo định kỳ.
             </p>
           </div>
 
           {/* INTERACTIVE TIMELINE PIPELINE BAR */}
-          <div className="reveal-fade-up mb-3">
-            <div className="relative bg-white border border-slate-200/90 rounded-2xl p-2.5 sm:p-3 shadow-xs overflow-x-auto scrollbar-thin">
+          <div className="reveal-fade-up mb-2.5 sm:mb-3">
+            <div className="relative bg-white border border-slate-200/90 rounded-2xl p-2 sm:p-2.5 shadow-xs overflow-x-auto scrollbar-thin">
               {/* Connecting Track Line */}
-              <div className="hidden lg:block absolute top-[30px] left-[6%] right-[6%] h-1 bg-slate-200 rounded-full z-0 overflow-hidden">
+              <div className="hidden lg:block absolute top-[28px] left-[6%] right-[6%] h-1 bg-slate-200 rounded-full z-0 overflow-hidden">
                 <div 
                   className="h-full bg-brand-600 transition-all duration-500 ease-out"
                   style={{ width: `${(activeStep / (steps.length - 1)) * 100}%` }}
@@ -181,7 +181,7 @@ export default function ProcessSection() {
               </div>
 
               {/* Stepper Buttons */}
-              <div className="relative z-10 flex lg:grid lg:grid-cols-7 gap-1.5 min-w-[580px] lg:min-w-0">
+              <div className="relative z-10 flex lg:grid lg:grid-cols-7 gap-1 sm:gap-1.5 min-w-[540px] lg:min-w-0">
                 {steps.map((item, index) => {
                   const isActive = activeStep === index;
                   const isPassed = activeStep > index;
@@ -190,7 +190,7 @@ export default function ProcessSection() {
                     <button
                       key={item.step}
                       onClick={() => setActiveStep(index)}
-                      className={`flex-1 flex flex-col items-center group text-center p-1.5 rounded-xl transition-all duration-300 cursor-pointer ${
+                      className={`flex-1 flex flex-col items-center group text-center p-1 sm:p-1.5 rounded-xl transition-all duration-300 cursor-pointer ${
                         isActive 
                           ? "bg-brand-50/60 ring-2 ring-brand-500/50 shadow-xs scale-102" 
                           : "hover:bg-slate-50/70"
@@ -198,7 +198,7 @@ export default function ProcessSection() {
                     >
                       {/* Step Node Circle */}
                       <div 
-                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center font-black text-xs transition-all duration-300 mb-1.5 ${
+                        className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-xl flex items-center justify-center font-black text-[11px] sm:text-xs transition-all duration-300 mb-1 ${
                           isActive 
                             ? "bg-brand-600 text-white scale-105 ring-2 ring-white shadow-md shadow-brand/30" 
                             : isPassed
@@ -207,19 +207,19 @@ export default function ProcessSection() {
                         }`}
                       >
                         {isPassed ? (
-                          <Check className="w-4 h-4 text-emerald-600 stroke-[2.5]" />
+                          <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 stroke-[2.5]" />
                         ) : (
                           item.step
                         )}
                       </div>
 
                       {/* Step Label */}
-                      <span className={`text-[11px] font-bold transition-colors line-clamp-1 ${
+                      <span className={`text-[clamp(10px,0.8vw,11.5px)] font-bold transition-colors line-clamp-1 ${
                         isActive ? "text-brand-700" : "text-slate-600 group-hover:text-slate-900"
                       }`}>
                         {item.title}
                       </span>
-                      <span className="text-[9.5px] text-slate-400 font-medium line-clamp-1">
+                      <span className="text-[clamp(9px,0.7vw,10px)] text-slate-400 font-medium line-clamp-1">
                         {item.subtitle}
                       </span>
                     </button>
@@ -229,52 +229,52 @@ export default function ProcessSection() {
             </div>
           </div>
 
-          {/* ACTIVE STEP SPOTLIGHT HERO CARD (SOLID RED, NO BACKGROUND PATTERN, NO GRADIENT SPREAD) */}
-          <div className="reveal-fade-up mb-3">
+          {/* ACTIVE STEP SPOTLIGHT HERO CARD */}
+          <div className="reveal-fade-up mb-2">
             <div 
-              className="p-4 sm:p-5.5 rounded-2xl bg-brand-600 border border-brand-700 text-white transition-all duration-300 shadow-xl relative overflow-hidden"
+              className="p-[clamp(0.875rem,1.8vw,1.375rem)] rounded-2xl bg-brand-600 border border-brand-700 text-white transition-all duration-300 shadow-xl relative overflow-hidden"
             >
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-3.5 lg:gap-6 items-center">
                 {/* Left Highlight Info */}
                 <div className="lg:col-span-7">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
                     <span 
-                      className="w-7 h-7 rounded-lg flex items-center justify-center font-black text-xs text-brand-600 bg-white shadow-xs"
+                      className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center font-black text-xs text-brand-600 bg-white shadow-xs"
                     >
                       {currentStep.step}
                     </span>
                     <div className="flex items-center gap-1.5">
                       <span 
-                        className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-white/20 text-white border border-white/30"
+                        className="text-[10px] sm:text-[11px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full bg-white/20 text-white border border-white/30"
                       >
                         {currentStep.badge}
                       </span>
-                      <span className="text-[11px] text-red-100 font-medium">Bước {activeStep + 1} / 7</span>
+                      <span className="text-[10.5px] sm:text-[11px] text-red-100 font-medium">Bước {activeStep + 1} / 7</span>
                     </div>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-black text-white mb-1.5 flex flex-wrap items-center gap-2">
+                  <h3 className="text-base sm:text-lg lg:text-[19px] font-black text-white mb-1 flex flex-wrap items-center gap-1.5 sm:gap-2">
                     <span>{currentStep.title}</span>
                     <span className="text-xs font-bold text-red-100">
                       • {currentStep.subtitle}
                     </span>
                   </h3>
 
-                  <p className="text-xs sm:text-[13px] text-red-50/90 leading-relaxed mb-3.5 font-normal">
+                  <p className="text-[clamp(11px,0.85vw,12.5px)] text-red-50/90 leading-relaxed mb-3 font-normal">
                     {currentStep.desc}
                   </p>
 
                   {/* Micro Actions Navigation */}
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     <button
                       onClick={() => setActiveStep((prev) => (prev > 0 ? prev - 1 : steps.length - 1))}
-                      className="px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 active:scale-95 text-xs font-bold text-white transition-all cursor-pointer border border-white/25 shadow-2xs"
+                      className="px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 active:scale-95 text-xs font-bold text-white transition-all cursor-pointer border border-white/25 shadow-2xs"
                     >
                       ← Trước
                     </button>
                     <button
                       onClick={() => setActiveStep((prev) => (prev < steps.length - 1 ? prev + 1 : 0))}
-                      className="px-4 py-1.5 rounded-xl text-xs font-black text-brand-600 transition-all duration-300 cursor-pointer flex items-center gap-1 bg-white hover:bg-red-50 shadow-md active:scale-95"
+                      className="px-3.5 py-1.5 rounded-xl text-xs font-black text-brand-600 transition-all duration-300 cursor-pointer flex items-center gap-1 bg-white hover:bg-red-50 shadow-md active:scale-95"
                     >
                       <span>Tiếp theo</span>
                       <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
@@ -282,28 +282,28 @@ export default function ProcessSection() {
                   </div>
                 </div>
 
-                {/* Right Detail Matrix Box (Solid Glass Frame on Red Card) */}
-                <div className="lg:col-span-5 bg-black/15 border border-white/20 rounded-xl p-3.5 sm:p-4 space-y-2.5 shadow-sm">
-                  <div className="flex items-center justify-between pb-2 border-b border-white/15">
-                    <span className="text-[11px] font-black text-white uppercase tracking-wider">Thông số vận hành</span>
+                {/* Right Detail Matrix Box */}
+                <div className="lg:col-span-5 bg-black/15 border border-white/20 rounded-xl p-3 sm:p-3.5 space-y-2 shadow-sm">
+                  <div className="flex items-center justify-between pb-1.5 border-b border-white/15">
+                    <span className="text-[10.5px] sm:text-[11px] font-black text-white uppercase tracking-wider">Thông số vận hành</span>
                     <div className="p-1 rounded-lg bg-white/20 text-white shadow-2xs">
-                      {React.cloneElement(currentStep.icon, { className: "w-5 h-5 text-white" })}
+                      {React.cloneElement(currentStep.icon, { className: "w-4 h-4 sm:w-5 sm:h-5 text-white" })}
                     </div>
                   </div>
 
                   <div>
-                    <span className="text-[10.5px] text-red-100 block font-medium">Kênh / Môi trường:</span>
-                    <span className="text-xs font-bold text-white">{currentStep.detail.channel}</span>
+                    <span className="text-[10px] text-red-100 block font-medium">Kênh / Môi trường:</span>
+                    <span className="text-[11.5px] sm:text-xs font-bold text-white">{currentStep.detail.channel}</span>
                   </div>
 
                   <div>
-                    <span className="text-[10.5px] text-red-100 block font-medium">Kết quả bàn giao:</span>
-                    <span className="text-xs font-bold text-white">{currentStep.detail.output}</span>
+                    <span className="text-[10px] text-red-100 block font-medium">Kết quả bàn giao:</span>
+                    <span className="text-[11.5px] sm:text-xs font-bold text-white">{currentStep.detail.output}</span>
                   </div>
 
                   <div>
-                    <span className="text-[10.5px] text-red-100 block font-medium">Cam kết tiêu chuẩn:</span>
-                    <span className="text-xs font-bold text-white flex items-center gap-1">
+                    <span className="text-[10px] text-red-100 block font-medium">Cam kết tiêu chuẩn:</span>
+                    <span className="text-[11.5px] sm:text-xs font-bold text-white flex items-center gap-1">
                       <ShieldCheck className="w-3.5 h-3.5 text-white shrink-0 stroke-[2.5]" />
                       {currentStep.detail.slaNote}
                     </span>

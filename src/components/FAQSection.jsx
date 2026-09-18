@@ -3,7 +3,7 @@ import { HelpCircle, ChevronDown, MessageSquare } from "lucide-react";
 import { FAQS_DATA } from "../data/maintenanceData";
 
 export default function FAQSection() {
-  const [openId, setOpenId] = useState(1);
+  const [openId, setOpenId] = useState(null);
 
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
@@ -18,23 +18,23 @@ export default function FAQSection() {
       id="faq"
       className="snap-section relative bg-[#F8FAFC] border-b border-slate-200/80 overflow-hidden flex flex-col justify-center"
     >
-      <div className="internal-scroll-container flex flex-col justify-center min-h-[100svh] relative">
-        <div className="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full py-4 sm:py-6 flex flex-col justify-center relative z-10 h-full">
+      <div className="internal-scroll-container flex flex-col justify-center relative">
+        <div className="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full flex flex-col justify-center relative z-10">
           
           {/* Compact Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2.5 sm:mb-3.5">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mb-1">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2 sm:mb-3">
+            <h2 className="text-[clamp(1.15rem,2.2vw,1.65rem)] font-extrabold text-slate-900 tracking-tight mb-0.5">
               Câu hỏi thường gặp về dịch vụ chăm sóc website
             </h2>
-            <p className="text-[11px] sm:text-xs text-slate-600 leading-normal max-w-xl mx-auto">
+            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-slate-600 leading-normal max-w-xl mx-auto">
               Mọi quy định về chi phí, hạn mức và cơ chế hỗ trợ kỹ thuật được giải thích rõ ràng và minh bạch.
             </p>
           </div>
 
-          {/* 2-Column Responsive Compact Grid (Fits completely in 1 screen height) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 max-h-[calc(100svh-175px)] sm:max-h-none overflow-y-auto pr-1" data-reveal-container>
+          {/* 2-Column Responsive Compact Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5" data-reveal-container>
             {/* Column 1 */}
-            <div className="space-y-2 sm:space-y-2.5">
+            <div className="space-y-1.5 sm:space-y-2">
               {col1.map((item) => {
                 const isOpen = openId === item.id;
                 return (
@@ -53,7 +53,7 @@ export default function FAQSection() {
                       aria-controls={`faq-answer-${item.id}`}
                       className="w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-xl"
                     >
-                      <span className="text-[11.5px] sm:text-xs font-bold text-slate-900 pr-2 leading-snug">
+                      <span className="text-[clamp(11px,0.82vw,12.5px)] font-bold text-slate-900 pr-2 leading-snug">
                         {item.question}
                       </span>
                       <div
@@ -71,7 +71,7 @@ export default function FAQSection() {
                       <div
                         id={`faq-answer-${item.id}`}
                         role="region"
-                        className="px-2.5 pb-2.5 pt-0 sm:px-3 sm:pb-3 text-[11px] sm:text-[11.5px] text-slate-600 leading-relaxed border-t border-slate-100 animate-fadeIn"
+                        className="px-2.5 pb-2.5 pt-0 sm:px-3 sm:pb-3 text-[clamp(10.5px,0.8vw,11.5px)] text-slate-600 leading-relaxed border-t border-slate-100 animate-fadeIn"
                       >
                         {item.answer}
                       </div>
@@ -82,7 +82,7 @@ export default function FAQSection() {
             </div>
 
             {/* Column 2 */}
-            <div className="space-y-2 sm:space-y-2.5">
+            <div className="space-y-1.5 sm:space-y-2">
               {col2.map((item) => {
                 const isOpen = openId === item.id;
                 return (
@@ -101,7 +101,7 @@ export default function FAQSection() {
                       aria-controls={`faq-answer-${item.id}`}
                       className="w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-xl"
                     >
-                      <span className="text-[11.5px] sm:text-xs font-bold text-slate-900 pr-2 leading-snug">
+                      <span className="text-[clamp(11px,0.82vw,12.5px)] font-bold text-slate-900 pr-2 leading-snug">
                         {item.question}
                       </span>
                       <div
@@ -119,7 +119,7 @@ export default function FAQSection() {
                       <div
                         id={`faq-answer-${item.id}`}
                         role="region"
-                        className="px-2.5 pb-2.5 pt-0 sm:px-3 sm:pb-3 text-[11px] sm:text-[11.5px] text-slate-600 leading-relaxed border-t border-slate-100 animate-fadeIn"
+                        className="px-2.5 pb-2.5 pt-0 sm:px-3 sm:pb-3 text-[clamp(10.5px,0.8vw,11.5px)] text-slate-600 leading-relaxed border-t border-slate-100 animate-fadeIn"
                       >
                         {item.answer}
                       </div>
@@ -132,7 +132,7 @@ export default function FAQSection() {
 
           {/* Quick Help Footer Hint */}
           <div className="reveal-fade-up text-center mt-2.5 sm:mt-3">
-            <p className="text-[11px] text-slate-600 inline-flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/70 shadow-2xs">
+            <p className="text-[clamp(10.5px,0.8vw,11.5px)] text-slate-600 inline-flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/70 shadow-2xs">
               <MessageSquare className="w-3 h-3 text-brand-600" />
               <span>Bạn có câu hỏi riêng cho website của mình?</span>
               <a

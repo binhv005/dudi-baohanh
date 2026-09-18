@@ -174,7 +174,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
   return (
     <section 
       id="audit-form" 
-      className="snap-section relative min-h-[100svh] overflow-hidden border-b border-slate-200/90 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#FAFAFC] text-slate-800 flex items-center py-8 sm:py-12 lg:py-14"
+      className="snap-section relative overflow-hidden border-b border-slate-200/90 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#FAFAFC] text-slate-800 flex items-center"
     >
       {/* Light Tech Grid Background Pattern */}
       <div 
@@ -189,29 +189,29 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="internal-scroll-container relative z-10 w-full flex flex-col items-center justify-center my-auto py-4 sm:py-6 lg:py-8">
+      <div className="internal-scroll-container relative z-10 w-full flex flex-col items-center justify-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
           
-          {/* Section Header - Single Line Fit */}
-          <div className="reveal-fade-up text-center max-w-4xl lg:max-w-5xl mx-auto mb-3 sm:mb-5 lg:mb-6">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-[26px] font-black text-slate-900 tracking-tight leading-tight mb-1">
+          {/* Section Header */}
+          <div className="reveal-fade-up text-center max-w-3xl mx-auto mb-2.5 sm:mb-3.5">
+            <h2 className="text-[clamp(1.15rem,2.2vw,1.65rem)] font-black text-slate-900 tracking-tight leading-tight mb-0.5">
               Khảo sát sức khỏe website & tư vấn bảo trì miễn phí
             </h2>
-            <p className="text-xs sm:text-[13px] text-slate-600 leading-normal font-normal max-w-3xl mx-auto">
+            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-slate-600 leading-normal font-normal max-w-2xl mx-auto">
               Kỹ sư DUDI trực tiếp quét lỗi, kiểm tra bảo mật, đo tốc độ và đề xuất phương án tối ưu trong 30 phút.
             </p>
           </div>
 
-          {/* 2-Column Responsive Grid: 40% Mascot & 60% Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-8 items-center">
+          {/* 2-Column Responsive Grid: Mascot & Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
 
-            {/* LEFT: 3D Support Mascot Visual (40%) */}
-            <div className="lg:col-span-4 flex items-center justify-center reveal-fade-right">
-              <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[500px] flex justify-center scale-105 sm:scale-115 lg:scale-120 origin-center">
+            {/* LEFT: 3D Support Mascot Visual (+30% larger) */}
+            <div className="lg:col-span-5 flex items-center justify-center reveal-fade-right">
+              <div className="relative w-full max-w-[clamp(280px,36vw,495px)] flex justify-center origin-center py-2">
                 <img
-                  src="/mascot-support.webp"
+                  src="/faq-mascot.webp"
                   alt="DUDI Robot hỗ trợ vận hành & kiểm tra website"
-                  className="w-full h-auto object-contain filter drop-shadow-[0_20px_40px_rgba(236,20,32,0.22)] animate-float-slow select-none"
+                  className="w-full h-auto max-h-[clamp(280px,42vh,495px)] object-contain filter drop-shadow-[0_24px_48px_rgba(236,20,32,0.24)] animate-float-slow select-none hover:scale-105 transition-transform duration-300 cursor-pointer"
                   width="520"
                   height="520"
                   loading="lazy"
@@ -219,10 +219,10 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
               </div>
             </div>
 
-            {/* RIGHT: Form Card (60%) */}
-            <div className="lg:col-span-6 flex justify-center reveal-fade-left">
-              <div className="w-full">
-                <div className="relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/90 text-slate-900 overflow-hidden">
+            {/* RIGHT: Form Card (7 cols) */}
+            <div className="lg:col-span-7 flex justify-center reveal-fade-left">
+              <div className="w-full max-w-xl lg:max-w-none">
+                <div className="relative bg-white rounded-2xl sm:rounded-3xl p-[clamp(0.875rem,1.5vw,1.375rem)] shadow-xl border border-slate-200/90 text-slate-900 overflow-hidden">
                   
                   {/* Top Mech Accent Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 rounded-b-md shadow-[0_0_8px_#EC1420]" />
@@ -232,11 +232,11 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                   <div className="absolute top-5 right-0 w-0.5 h-5 bg-brand-500 rounded-l-sm" />
 
               {/* Form Title */}
-              <div className="text-center mb-3 pt-1">
-                <h3 className="text-base sm:text-lg lg:text-xl font-black text-slate-900 tracking-tight leading-tight">
+              <div className="text-center mb-2.5 pt-0.5">
+                <h3 className="text-[clamp(13px,1.1vw,16px)] font-black text-slate-900 tracking-tight leading-tight">
                   Đăng ký <span className="text-brand-600 font-extrabold">Khảo sát Website</span>
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-500 font-medium leading-tight mt-1">
+                <p className="text-[clamp(10px,0.78vw,11px)] text-slate-500 font-medium leading-tight mt-0.5">
                   Nhận kết quả kiểm tra sơ bộ & đề xuất phương án bảo trì trong 30 phút
                 </p>
               </div>
@@ -264,11 +264,11 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="space-y-2.5">
+                <form onSubmit={handleSubmit} noValidate className="space-y-2 sm:space-y-2.5">
                   
                   {/* Field 1: Website URL */}
                   <div>
-                    <label htmlFor="websiteUrl" className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-slate-800 mb-1">
+                    <label htmlFor="websiteUrl" className="flex items-center gap-1.5 text-[clamp(10.5px,0.8vw,11.5px)] font-bold text-slate-800 mb-0.5 sm:mb-1">
                       <Globe className="w-3.5 h-3.5 text-brand-600" />
                       <span>Địa chỉ Website: <span className="text-rose-600">*</span></span>
                     </label>
@@ -279,7 +279,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         placeholder="yourdomain.com hoặc https://yourdomain.com"
                         value={formData.websiteUrl}
                         onChange={(e) => handleInputChange("websiteUrl", e.target.value)}
-                        className={`w-full px-3 py-1.5 text-xs sm:text-[13px] h-8.5 sm:h-9 rounded-xl bg-white border text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
+                        className={`w-full px-3 py-1 text-[clamp(11px,0.85vw,12.5px)] h-[clamp(2.1rem,4.2vh,2.35rem)] rounded-xl bg-white border text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
                           errors.websiteUrl
                             ? "border-rose-500 focus:ring-rose-500/20"
                             : "border-slate-200 hover:border-slate-300 focus:border-brand-500 focus:ring-brand-500/20 shadow-2xs"
@@ -297,7 +297,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                   {/* Field 2 & 3: Platform & Package Interest (Side-by-side) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
-                      <label htmlFor="platform" className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-slate-800 mb-1">
+                      <label htmlFor="platform" className="flex items-center gap-1.5 text-[clamp(10.5px,0.8vw,11.5px)] font-bold text-slate-800 mb-0.5 sm:mb-1">
                         <Layers className="w-3.5 h-3.5 text-brand-600" />
                         <span>Nền tảng website:</span>
                       </label>
@@ -305,7 +305,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         id="platform"
                         value={formData.platform}
                         onChange={(e) => handleInputChange("platform", e.target.value)}
-                        className="w-full px-2.5 py-1.5 text-xs sm:text-[13px] h-8.5 sm:h-9 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all font-medium cursor-pointer shadow-2xs"
+                        className="w-full px-2.5 py-1 text-[clamp(11px,0.85vw,12.5px)] h-[clamp(2.1rem,4.2vh,2.35rem)] rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all font-medium cursor-pointer shadow-2xs"
                       >
                         <option value="WordPress">WordPress</option>
                         <option value="Code riêng">Mã nguồn riêng</option>
@@ -315,7 +315,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                     </div>
 
                     <div>
-                      <label htmlFor="packageInterest" className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-slate-800 mb-1">
+                      <label htmlFor="packageInterest" className="flex items-center gap-1.5 text-[clamp(10.5px,0.8vw,11.5px)] font-bold text-slate-800 mb-0.5 sm:mb-1">
                         <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                         <span>Gói quan tâm:</span>
                       </label>
@@ -326,7 +326,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                           handleInputChange("packageInterest", e.target.value);
                           if (onSelectPackage) onSelectPackage(e.target.value);
                         }}
-                        className="w-full px-2.5 py-1.5 text-xs sm:text-[13px] h-8.5 sm:h-9 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all font-semibold text-brand-700 cursor-pointer shadow-2xs"
+                        className="w-full px-2.5 py-1 text-[clamp(11px,0.85vw,12.5px)] h-[clamp(2.1rem,4.2vh,2.35rem)] rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-900 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all font-semibold text-brand-700 cursor-pointer shadow-2xs"
                       >
                         <option value="Cơ bản">Cơ bản (500k/tháng)</option>
                         <option value="Tiêu chuẩn">Tiêu chuẩn (1.5tr/tháng)</option>
@@ -339,7 +339,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                   {/* Field 4 & 5: Full Name & Phone Number (Side-by-side) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
-                      <label htmlFor="fullName" className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-slate-800 mb-1">
+                      <label htmlFor="fullName" className="flex items-center gap-1.5 text-[clamp(10.5px,0.8vw,11.5px)] font-bold text-slate-800 mb-0.5 sm:mb-1">
                         <User className="w-3.5 h-3.5 text-brand-600" />
                         <span>Họ và tên: <span className="text-rose-600">*</span></span>
                       </label>
@@ -349,7 +349,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         placeholder="Nguyễn Văn A"
                         value={formData.fullName}
                         onChange={(e) => handleInputChange("fullName", e.target.value)}
-                        className={`w-full px-3 py-1.5 text-xs sm:text-[13px] h-8.5 sm:h-9 rounded-xl bg-white border text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
+                        className={`w-full px-3 py-1 text-[clamp(11px,0.85vw,12.5px)] h-[clamp(2.1rem,4.2vh,2.35rem)] rounded-xl bg-white border text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
                           errors.fullName
                             ? "border-rose-500 focus:ring-rose-500/20"
                             : "border-slate-200 hover:border-slate-300 focus:border-brand-500 focus:ring-brand-500/20 shadow-2xs"
@@ -361,7 +361,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-slate-800 mb-1">
+                      <label htmlFor="phone" className="flex items-center gap-1.5 text-[clamp(10.5px,0.8vw,11.5px)] font-bold text-slate-800 mb-0.5 sm:mb-1">
                         <Phone className="w-3.5 h-3.5 text-brand-600" />
                         <span>Số ĐT / Zalo: <span className="text-rose-600">*</span></span>
                       </label>
@@ -371,7 +371,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         placeholder="0909 163 821"
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        className={`w-full px-3 py-1.5 text-xs sm:text-[13px] h-8.5 sm:h-9 rounded-xl bg-white border text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
+                        className={`w-full px-3 py-1 text-[clamp(11px,0.85vw,12.5px)] h-[clamp(2.1rem,4.2vh,2.35rem)] rounded-xl bg-white border text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
                           errors.phone
                             ? "border-rose-500 focus:ring-rose-500/20"
                             : "border-slate-200 hover:border-slate-300 focus:border-brand-500 focus:ring-brand-500/20 shadow-2xs"
@@ -385,10 +385,10 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
 
                   {/* Field 6: Website Situation Pill Checkboxes */}
                   <div>
-                    <label className="block text-[10.5px] sm:text-[11px] font-bold text-slate-700 mb-1">
+                    <label className="block text-[clamp(10px,0.78vw,11px)] font-bold text-slate-700 mb-1">
                       Tình trạng website cần hỗ trợ:
                     </label>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1 sm:gap-1.5">
                       {situationOptions.map((opt) => {
                         const checked = formData.situations.includes(opt);
                         return (
@@ -396,7 +396,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                             key={opt}
                             type="button"
                             onClick={() => toggleSituation(opt)}
-                            className={`px-2 py-0.5 sm:py-1 rounded-lg text-[10px] sm:text-[11px] font-medium transition-all flex items-center gap-1 cursor-pointer border ${
+                            className={`px-2 py-0.5 sm:py-1 rounded-lg text-[clamp(9.5px,0.75vw,10.5px)] font-medium transition-all flex items-center gap-1 cursor-pointer border ${
                               checked
                                 ? "bg-brand-50 border-brand-300 text-brand-700 font-bold shadow-2xs"
                                 : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 shadow-2xs"
@@ -423,7 +423,7 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                         onChange={(e) => handleInputChange("consent", e.target.checked)}
                         className="rounded border-slate-300 text-brand-600 focus:ring-brand-500 w-3.5 h-3.5 cursor-pointer"
                       />
-                      <span className="text-[10px] sm:text-[10.5px] text-slate-600 font-medium">
+                      <span className="text-[clamp(9.5px,0.75vw,10.5px)] text-slate-600 font-medium">
                         Đồng ý để DUDI liên hệ báo kết quả kiểm tra
                       </span>
                     </label>
@@ -438,11 +438,11 @@ export default function AuditFormSection({ selectedPackage, onSelectPackage }) {
                   )}
 
                   {/* Submit Action Button */}
-                  <div className="pt-1">
+                  <div className="pt-0.5 sm:pt-1">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-2 px-4 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 hover:from-brand-500 hover:to-rose-500 active:scale-[0.98] text-white text-xs sm:text-sm font-bold shadow-brand hover:shadow-brand-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed h-9 sm:h-10"
+                      className="w-full py-2 px-4 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-rose-600 hover:from-brand-500 hover:to-rose-500 active:scale-[0.98] text-white text-[clamp(11.5px,0.9vw,13.5px)] font-bold shadow-brand hover:shadow-brand-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed h-[clamp(2.25rem,4.5vh,2.6rem)]"
                     >
                       {isSubmitting ? (
                         <>

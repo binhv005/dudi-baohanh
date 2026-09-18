@@ -82,28 +82,28 @@ export default function LimitsSection() {
   ];
 
   return (
-    <section id="limits" className="snap-section bg-[#F8FAFC] border-b border-slate-200/90 text-slate-800 relative overflow-hidden">
-      <div className="internal-scroll-container flex flex-col justify-center min-h-[100svh]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-3 sm:py-4 flex flex-col justify-center h-full">
+    <section id="limits" className="snap-section bg-[#B91C1C] text-white border-b border-red-800 relative overflow-hidden">
+      <div className="internal-scroll-container flex flex-col justify-center relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
           
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2 sm:mb-3">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight mb-0.5">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2.5 sm:mb-3.5">
+            <h2 className="text-[clamp(1.15rem,2.2vw,1.65rem)] font-black text-white tracking-tight mb-1 drop-shadow-xs">
               Cách tính hạn mức công việc hàng tháng
             </h2>
-            <p className="text-[11px] sm:text-xs text-slate-600 leading-snug">
+            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-white/90 leading-snug font-medium">
               DUDI công khai cách tính minh bạch để hai bên luôn chủ động và tối ưu hiệu quả vận hành.
             </p>
           </div>
 
           {/* 6 Compact Crisp Bento Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5" data-reveal-container>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3" data-reveal-container>
             {limitsData.map((item, index) => {
               const Icon = item.icon;
               return (
                 <div
                   key={index}
-                  className="reveal-stagger-item group relative bg-white rounded-xl p-2.5 sm:p-3 border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                  className="reveal-stagger-item group relative bg-white text-slate-800 rounded-xl p-[clamp(0.65rem,1.1vw,0.95rem)] border border-white/90 shadow-md hover:shadow-xl transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     {/* Top Bar: Icon + Number badge */}
@@ -117,12 +117,12 @@ export default function LimitsSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xs sm:text-[13px] font-bold text-slate-900 uppercase tracking-tight mb-1 group-hover:text-brand-600 transition-colors">
+                    <h3 className="text-[clamp(11px,0.85vw,12.5px)] font-bold text-slate-900 uppercase tracking-tight mb-1 group-hover:text-brand-600 transition-colors">
                       {item.tag}
                     </h3>
 
                     {/* Shortened concise summary */}
-                    <p className="text-[11px] text-slate-600 leading-snug mb-2">
+                    <p className="text-[clamp(10.5px,0.8vw,11.5px)] text-slate-600 leading-snug mb-2">
                       {item.summary}
                     </p>
                   </div>
@@ -132,7 +132,7 @@ export default function LimitsSection() {
                     {item.points.map((pt, pIdx) => (
                       <span 
                         key={pIdx}
-                        className="inline-flex items-center gap-0.5 text-[10px] font-medium text-slate-700 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded"
+                        className="inline-flex items-center gap-0.5 text-[clamp(9.5px,0.75vw,10.5px)] font-medium text-slate-700 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded"
                       >
                         <Check className="w-2.5 h-2.5 text-emerald-500 stroke-[2.5]" />
                         <span>{pt}</span>
@@ -145,9 +145,9 @@ export default function LimitsSection() {
           </div>
 
           {/* Bottom Note */}
-          <div className="reveal-fade-up text-center mt-2 sm:mt-2.5">
-            <div className="inline-flex items-center gap-1.5 text-[10.5px] sm:text-[11px] text-slate-500 bg-white/80 backdrop-blur-xs px-3 py-1 rounded-full border border-slate-200/80 shadow-2xs">
-              <Info className="w-3 h-3 text-slate-400 shrink-0" />
+          <div className="reveal-fade-up text-center mt-2.5 sm:mt-3">
+            <div className="inline-flex items-center gap-1.5 text-[clamp(10px,0.78vw,11px)] text-white bg-black/25 backdrop-blur-xs px-3.5 py-1 rounded-full border border-white/25 shadow-2xs font-medium">
+              <Info className="w-3.5 h-3.5 text-white/90 shrink-0" />
               <span>Toàn bộ hạn mức công việc được làm mới (reset) vào đầu chu kỳ mỗi tháng và không cộng dồn.</span>
             </div>
           </div>

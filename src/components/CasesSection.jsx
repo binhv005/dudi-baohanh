@@ -95,49 +95,49 @@ export default function CasesSection() {
   return (
     <section 
       id="cases" 
-      className="snap-section bg-[#FDFBF7] border-b border-slate-200/90 relative overflow-hidden min-h-[100svh] flex flex-col justify-center py-8 sm:py-12 lg:py-16"
+      className="snap-section bg-[#FDFBF7] border-b border-slate-200/90 relative overflow-hidden flex flex-col justify-center"
     >
-      <div className="internal-scroll-container relative z-10 flex flex-col justify-center w-full my-auto">
+      <div className="internal-scroll-container relative z-10 flex flex-col justify-center w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
 
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-6 sm:mb-8 lg:mb-10">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-tight mb-2">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-3 sm:mb-4">
+            <h2 className="text-[clamp(1.2rem,2.2vw,1.75rem)] font-black text-slate-900 tracking-tight leading-tight mb-1">
               4 tình huống xử lý kỹ thuật trước / sau tiêu biểu
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-slate-600 leading-relaxed font-normal">
               Minh chứng thực tế về năng lực ứng cứu và tối ưu hóa website chuyên nghiệp của đội ngũ kỹ sư DUDI.
             </p>
           </div>
 
           {/* 1-ROW HORIZONTAL 4-CARD LAYOUT */}
-          <div className="relative max-w-6xl xl:max-w-[1240px] mx-auto w-full px-2 sm:px-4">
+          <div className="relative max-w-6xl xl:max-w-[1240px] mx-auto w-full px-1 sm:px-3">
 
             {/* 4 Cards Grid - 1 Row on Desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-4.5 relative z-10" data-reveal-container>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 relative z-10" data-reveal-container>
 
               {/* CARD 01 - (RED) */}
               <div className="relative reveal-stagger-item group">
-                <div className="hidden sm:flex items-center gap-2 absolute -top-3.5 -right-2.5 z-20 pointer-events-none">
-                  <div className="w-9 h-9 rounded-xl bg-[#E11D48] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <div className="hidden sm:flex items-center gap-2 absolute -top-3 -right-2 z-20 pointer-events-none">
+                  <div className="w-8 h-8 rounded-xl bg-[#E11D48] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
                     {casesData[0].icon}
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-[#E11D48] text-white p-4.5 sm:p-5 lg:p-5.5 shadow-lg shadow-rose-600/15 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[250px] sm:min-h-[270px] lg:min-h-[290px]">
+                <div className="rounded-3xl bg-[#E11D48] text-white p-[clamp(0.875rem,1.4vw,1.35rem)] shadow-lg shadow-rose-600/15 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[clamp(230px,25vh,275px)]">
                   <div>
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-none text-white">
+                    <div className="flex items-baseline gap-2 mb-1.5 sm:mb-2">
+                      <span className="text-[clamp(1.5rem,2.2vw,2.25rem)] font-black tracking-tight leading-none text-white">
                         {casesData[0].id}
                       </span>
-                      <span className="text-xs sm:text-[13px] font-black tracking-wider uppercase text-white/95">
+                      <span className="text-[clamp(11px,0.85vw,13px)] font-black tracking-wider uppercase text-white/95">
                         {casesData[0].keyword}
                       </span>
                     </div>
 
-                    <div className="h-[1.5px] bg-white/40 w-full mb-3 rounded-full" />
+                    <div className="h-[1.5px] bg-white/40 w-full mb-2.5 rounded-full" />
 
-                    <div className="space-y-2 text-xs sm:text-[12.5px] lg:text-[13px] text-white/90 leading-relaxed">
+                    <div className="space-y-1.5 text-[clamp(11px,0.8vw,12.5px)] text-white/90 leading-relaxed">
                       <p>
                         <strong className="text-white font-bold">Vấn đề: </strong>
                         {casesData[0].problem}
@@ -149,8 +149,8 @@ export default function CasesSection() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-white/20 flex items-start gap-1.5 text-[11px] sm:text-xs font-bold text-white bg-white/10 px-2.5 py-2 rounded-xl backdrop-blur-xs leading-snug">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0 stroke-[2.5] mt-0.5" />
+                  <div className="mt-3 pt-2 border-t border-white/20 flex items-start gap-1.5 text-[clamp(10px,0.75vw,11.5px)] font-bold text-white bg-white/10 px-2.5 py-1.5 rounded-xl backdrop-blur-xs leading-snug">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 shrink-0 stroke-[2.5] mt-0.5" />
                     <span>{casesData[0].result}</span>
                   </div>
                 </div>
@@ -158,26 +158,26 @@ export default function CasesSection() {
 
               {/* CARD 02 - (AMBER) */}
               <div className="relative reveal-stagger-item group">
-                <div className="hidden sm:flex items-center gap-2 absolute -top-3.5 -right-2.5 z-20 pointer-events-none">
-                  <div className="w-9 h-9 rounded-xl bg-[#EAB308] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <div className="hidden sm:flex items-center gap-2 absolute -top-3 -right-2 z-20 pointer-events-none">
+                  <div className="w-8 h-8 rounded-xl bg-[#EAB308] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
                     {casesData[1].icon}
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-[#EAB308] text-white p-4.5 sm:p-5 lg:p-5.5 shadow-lg shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[250px] sm:min-h-[270px] lg:min-h-[290px]">
+                <div className="rounded-3xl bg-[#EAB308] text-white p-[clamp(0.875rem,1.4vw,1.35rem)] shadow-lg shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[clamp(230px,25vh,275px)]">
                   <div>
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-none text-white">
+                    <div className="flex items-baseline gap-2 mb-1.5 sm:mb-2">
+                      <span className="text-[clamp(1.5rem,2.2vw,2.25rem)] font-black tracking-tight leading-none text-white">
                         {casesData[1].id}
                       </span>
-                      <span className="text-xs sm:text-[13px] font-black tracking-wider uppercase text-white/95">
+                      <span className="text-[clamp(11px,0.85vw,13px)] font-black tracking-wider uppercase text-white/95">
                         {casesData[1].keyword}
                       </span>
                     </div>
 
-                    <div className="h-[1.5px] bg-white/40 w-full mb-3 rounded-full" />
+                    <div className="h-[1.5px] bg-white/40 w-full mb-2.5 rounded-full" />
 
-                    <div className="space-y-2 text-xs sm:text-[12.5px] lg:text-[13px] text-white/90 leading-relaxed">
+                    <div className="space-y-1.5 text-[clamp(11px,0.8vw,12.5px)] text-white/90 leading-relaxed">
                       <p>
                         <strong className="text-white font-bold">Vấn đề: </strong>
                         {casesData[1].problem}
@@ -189,8 +189,8 @@ export default function CasesSection() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-white/20 flex items-start gap-1.5 text-[11px] sm:text-xs font-bold text-white bg-white/10 px-2.5 py-2 rounded-xl backdrop-blur-xs leading-snug">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-950 shrink-0 stroke-[2.5] mt-0.5" />
+                  <div className="mt-3 pt-2 border-t border-white/20 flex items-start gap-1.5 text-[clamp(10px,0.75vw,11.5px)] font-bold text-white bg-white/10 px-2.5 py-1.5 rounded-xl backdrop-blur-xs leading-snug">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-950 shrink-0 stroke-[2.5] mt-0.5" />
                     <span>{casesData[1].result}</span>
                   </div>
                 </div>
@@ -198,26 +198,26 @@ export default function CasesSection() {
 
               {/* CARD 03 - (DARK NAVY) */}
               <div className="relative reveal-stagger-item group">
-                <div className="hidden sm:flex items-center gap-2 absolute -top-3.5 -right-2.5 z-20 pointer-events-none">
-                  <div className="w-9 h-9 rounded-xl bg-[#0F3A66] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <div className="hidden sm:flex items-center gap-2 absolute -top-3 -right-2 z-20 pointer-events-none">
+                  <div className="w-8 h-8 rounded-xl bg-[#0F3A66] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
                     {casesData[2].icon}
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-[#0F3A66] text-white p-4.5 sm:p-5 lg:p-5.5 shadow-lg shadow-blue-950/20 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[250px] sm:min-h-[270px] lg:min-h-[290px]">
+                <div className="rounded-3xl bg-[#0F3A66] text-white p-[clamp(0.875rem,1.4vw,1.35rem)] shadow-lg shadow-blue-950/20 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[clamp(230px,25vh,275px)]">
                   <div>
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-none text-white">
+                    <div className="flex items-baseline gap-2 mb-1.5 sm:mb-2">
+                      <span className="text-[clamp(1.5rem,2.2vw,2.25rem)] font-black tracking-tight leading-none text-white">
                         {casesData[2].id}
                       </span>
-                      <span className="text-xs sm:text-[13px] font-black tracking-wider uppercase text-white/95">
+                      <span className="text-[clamp(11px,0.85vw,13px)] font-black tracking-wider uppercase text-white/95">
                         {casesData[2].keyword}
                       </span>
                     </div>
 
-                    <div className="h-[1.5px] bg-white/30 w-full mb-3 rounded-full" />
+                    <div className="h-[1.5px] bg-white/30 w-full mb-2.5 rounded-full" />
 
-                    <div className="space-y-2 text-xs sm:text-[12.5px] lg:text-[13px] text-white/90 leading-relaxed">
+                    <div className="space-y-1.5 text-[clamp(11px,0.8vw,12.5px)] text-white/90 leading-relaxed">
                       <p>
                         <strong className="text-white font-bold">Vấn đề: </strong>
                         {casesData[2].problem}
@@ -229,8 +229,8 @@ export default function CasesSection() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-white/20 flex items-start gap-1.5 text-[11px] sm:text-xs font-bold text-white bg-white/10 px-2.5 py-2 rounded-xl backdrop-blur-xs leading-snug">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0 stroke-[2.5] mt-0.5" />
+                  <div className="mt-3 pt-2 border-t border-white/20 flex items-start gap-1.5 text-[clamp(10px,0.75vw,11.5px)] font-bold text-white bg-white/10 px-2.5 py-1.5 rounded-xl backdrop-blur-xs leading-snug">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 shrink-0 stroke-[2.5] mt-0.5" />
                     <span>{casesData[2].result}</span>
                   </div>
                 </div>
@@ -238,26 +238,26 @@ export default function CasesSection() {
 
               {/* CARD 04 - (SKY BLUE) */}
               <div className="relative reveal-stagger-item group">
-                <div className="hidden sm:flex items-center gap-2 absolute -top-3.5 -right-2.5 z-20 pointer-events-none">
-                  <div className="w-9 h-9 rounded-xl bg-[#0284C7] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <div className="hidden sm:flex items-center gap-2 absolute -top-3 -right-2 z-20 pointer-events-none">
+                  <div className="w-8 h-8 rounded-xl bg-[#0284C7] shadow-md flex items-center justify-center transform group-hover:scale-110 transition-transform">
                     {casesData[3].icon}
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-[#0284C7] text-white p-4.5 sm:p-5 lg:p-5.5 shadow-lg shadow-sky-600/15 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[250px] sm:min-h-[270px] lg:min-h-[290px]">
+                <div className="rounded-3xl bg-[#0284C7] text-white p-[clamp(0.875rem,1.4vw,1.35rem)] shadow-lg shadow-sky-600/15 transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between h-full min-h-[clamp(230px,25vh,275px)]">
                   <div>
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-none text-white">
+                    <div className="flex items-baseline gap-2 mb-1.5 sm:mb-2">
+                      <span className="text-[clamp(1.5rem,2.2vw,2.25rem)] font-black tracking-tight leading-none text-white">
                         {casesData[3].id}
                       </span>
-                      <span className="text-xs sm:text-[13px] font-black tracking-wider uppercase text-white/95">
+                      <span className="text-[clamp(11px,0.85vw,13px)] font-black tracking-wider uppercase text-white/95">
                         {casesData[3].keyword}
                       </span>
                     </div>
 
-                    <div className="h-[1.5px] bg-white/40 w-full mb-3 rounded-full" />
+                    <div className="h-[1.5px] bg-white/40 w-full mb-2.5 rounded-full" />
 
-                    <div className="space-y-2 text-xs sm:text-[12.5px] lg:text-[13px] text-white/90 leading-relaxed">
+                    <div className="space-y-1.5 text-[clamp(11px,0.8vw,12.5px)] text-white/90 leading-relaxed">
                       <p>
                         <strong className="text-white font-bold">Vấn đề: </strong>
                         {casesData[3].problem}
@@ -269,8 +269,8 @@ export default function CasesSection() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-white/20 flex items-start gap-1.5 text-[11px] sm:text-xs font-bold text-white bg-white/10 px-2.5 py-2 rounded-xl backdrop-blur-xs leading-snug">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0 stroke-[2.5] mt-0.5" />
+                  <div className="mt-3 pt-2 border-t border-white/20 flex items-start gap-1.5 text-[clamp(10px,0.75vw,11.5px)] font-bold text-white bg-white/10 px-2.5 py-1.5 rounded-xl backdrop-blur-xs leading-snug">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 shrink-0 stroke-[2.5] mt-0.5" />
                     <span>{casesData[3].result}</span>
                   </div>
                 </div>

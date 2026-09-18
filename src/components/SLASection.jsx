@@ -74,49 +74,49 @@ export default function SLASection() {
 
   return (
     <section id="sla" className="snap-section bg-[#F8FAFC] border-b border-slate-200/80">
-      <div className="internal-scroll-container flex flex-col justify-center min-h-[100svh]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-5 sm:py-7 flex flex-col justify-center h-full">
+      <div className="internal-scroll-container flex flex-col justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center">
           
           {/* Section Header */}
-          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-3 sm:mb-4">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mb-1">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-2.5 sm:mb-3.5">
+            <h2 className="text-[clamp(1.15rem,2.2vw,1.65rem)] font-extrabold text-slate-900 tracking-tight mb-0.5">
               Phản hồi nhanh — Phân loại mức độ chuẩn xác
             </h2>
-            <p className="text-xs text-slate-600 leading-normal max-w-xl mx-auto">
+            <p className="text-[clamp(0.72rem,0.9vw,0.8125rem)] text-slate-600 leading-normal max-w-xl mx-auto">
               DUDI cam kết mốc tiếp nhận ban đầu rõ ràng, đảm bảo xử lý sự cố có lộ trình an toàn và minh bạch.
             </p>
           </div>
 
           {/* 4 Curved Arched Infographic Cards Grid with Rich Hover Effects */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4 pt-1.5" data-reveal-container>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-3 sm:mb-4 pt-1" data-reveal-container>
             {slaCards.map((item) => (
               <div key={item.number} className="reveal-stagger-item flex flex-col items-center group cursor-pointer">
                 
                 {/* Top Arched Hood with Center Number Circle */}
                 <div className="relative flex items-center justify-center z-10 transition-transform duration-300 group-hover:-translate-y-0.5">
-                  <div className={`w-20 h-6 ${item.badgeBg} rounded-t-full shadow-xs flex items-start justify-center pt-0.5 transition-all duration-300 group-hover:brightness-105`}>
-                    <div className="w-7 h-7 -mt-3 rounded-full bg-white shadow-sm border-2 border-slate-100 flex items-center justify-center font-black text-[10px] text-slate-900 group-hover:scale-105 transition-transform duration-300">
+                  <div className={`w-18 sm:w-20 h-5.5 sm:h-6 ${item.badgeBg} rounded-t-full shadow-xs flex items-start justify-center pt-0.5 transition-all duration-300 group-hover:brightness-105`}>
+                    <div className="w-6.5 h-6.5 sm:w-7 sm:h-7 -mt-2.5 sm:-mt-3 rounded-full bg-white shadow-sm border-2 border-slate-100 flex items-center justify-center font-black text-[9.5px] sm:text-[10px] text-slate-900 group-hover:scale-105 transition-transform duration-300">
                       {item.number}
                     </div>
                   </div>
                 </div>
 
                 {/* Main White Card Body */}
-                <div className={`w-full bg-white rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.04)] ${item.accentShadow} border border-slate-200/90 ${item.accentBorder} pt-5 pb-3 px-3 text-center flex flex-col justify-between -mt-3 transition-all duration-300 group-hover:-translate-y-0.5`}>
+                <div className={`w-full bg-white rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.04)] ${item.accentShadow} border border-slate-200/90 ${item.accentBorder} pt-4 sm:pt-5 pb-2.5 sm:pb-3 px-2.5 sm:px-3 text-center flex flex-col justify-between -mt-3 transition-all duration-300 group-hover:-translate-y-0.5`}>
                   
                   <div>
                     {/* Clean Icon with Hover Spin/Bounce */}
-                    <div className="w-7 h-7 mx-auto flex items-center justify-center mb-1">
+                    <div className="w-6 h-6 sm:w-7 sm:h-7 mx-auto flex items-center justify-center mb-1">
                       {item.icon}
                     </div>
 
                     {/* BOLD UPPERCASE TITLE */}
-                    <h3 className={`text-[11px] font-black uppercase tracking-wider mb-1.5 transition-transform duration-300 ${item.titleColor}`}>
+                    <h3 className={`text-[clamp(10px,0.8vw,11.5px)] font-black uppercase tracking-wider mb-1 transition-transform duration-300 ${item.titleColor}`}>
                       {item.title}
                     </h3>
 
                     {/* Concise, Focused Specs Box */}
-                    <div className={`space-y-0.5 text-[10px] text-slate-600 mb-2 text-left bg-slate-50/90 p-2 rounded-lg border border-slate-100 transition-colors duration-300 ${item.specsBg}`}>
+                    <div className={`space-y-0.5 text-[clamp(9.5px,0.75vw,10.5px)] text-slate-600 mb-1.5 sm:mb-2 text-left bg-slate-50/90 p-1.5 sm:p-2 rounded-lg border border-slate-100 transition-colors duration-300 ${item.specsBg}`}>
                       <div className="flex items-start gap-1">
                         <span className="font-bold text-slate-900 shrink-0">Phản hồi:</span>
                         <span className="font-bold text-slate-900">{item.response}</span>
@@ -129,7 +129,7 @@ export default function SLASection() {
                   </div>
 
                   {/* Bottom Output */}
-                  <div className="pt-1.5 border-t border-slate-100 text-[9.5px] text-slate-500 text-left">
+                  <div className="pt-1.5 border-t border-slate-100 text-[clamp(9px,0.7vw,10px)] text-slate-500 text-left">
                     <span className="font-bold text-slate-700 block mb-0.5">Đầu ra xử lý:</span>
                     <span className="leading-tight block text-slate-600">{item.output}</span>
                   </div>
@@ -146,17 +146,17 @@ export default function SLASection() {
             <button
               type="button"
               onClick={() => setShowConditions(!showConditions)}
-              className="w-full p-3 flex items-center justify-between gap-2 text-left cursor-pointer hover:bg-slate-850 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-xl"
+              className="w-full p-2.5 sm:p-3 flex items-center justify-between gap-2 text-left cursor-pointer hover:bg-slate-850 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-xl"
               aria-expanded={showConditions}
             >
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
-                <h3 className="text-xs sm:text-[12.5px] font-bold text-white">
+                <h3 className="text-[11.5px] sm:text-xs font-bold text-white">
                   Điều kiện áp dụng và nguyên tắc tính thời gian SLA
                 </h3>
               </div>
 
-              <div className="flex items-center gap-1.5 shrink-0 text-xs font-semibold text-blue-300 bg-blue-950/60 hover:bg-blue-900/60 px-2.5 py-1 rounded-lg border border-blue-800/60 transition-all">
+              <div className="flex items-center gap-1 shrink-0 text-[11px] font-semibold text-blue-300 bg-blue-950/60 hover:bg-blue-900/60 px-2.5 py-1 rounded-lg border border-blue-800/60 transition-all">
                 <span>{showConditions ? "Thu gọn" : "Xem chi tiết"}</span>
                 <ChevronDown 
                   className={`w-3.5 h-3.5 transition-transform duration-300 ${
@@ -173,7 +173,7 @@ export default function SLASection() {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="pt-2 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-1.5 text-[10.5px] text-slate-300">
+                <div className="pt-2 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-1.5 text-[clamp(10px,0.78vw,11px)] text-slate-300">
                   {SLA_CONDITIONS.map((cond, idx) => (
                     <div key={idx} className="flex items-start gap-2 p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-600 transition-colors">
                       <span className="w-4 h-4 rounded-full bg-blue-500/30 text-blue-300 flex items-center justify-center shrink-0 mt-0.5 text-[9px] font-bold">

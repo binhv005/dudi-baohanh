@@ -36,26 +36,18 @@
    Smooth Scroll-Driven Section Layout
    ========================================================================== */
 
-/* Sections are spacious, beautifully centered and naturally fluid */
+/* Sections are compact, beautifully proportioned and naturally fluid */
 .snap-section,
 .scroll-reveal-section {
-  min-height: calc(100svh - 4rem);
+  min-height: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   width: 100%;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .snap-section,
-  .scroll-reveal-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
+  padding-top: clamp(2rem, 3.5vw, 3.25rem);
+  padding-bottom: clamp(2rem, 3.5vw, 3.25rem);
 }
 
 /* Internal container styling */

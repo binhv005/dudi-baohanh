@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowRight, Phone, MessageSquare, ShieldCheck } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Menu, X, ArrowRight, Phone, MessageSquare, ChevronDown } from "lucide-react";
 import { COMPANY_INFO } from "../data/maintenanceData";
 import { trackCtaClick, trackPhoneClick, trackZaloClick } from "../utils/tracking";
 import { handleHotlineClick } from "../utils/phoneHelper";
@@ -8,6 +8,9 @@ import { navigateToSection } from "../utils/navigationHelper";
 export default function Header({ onSelectPackage }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [webMenuOpen, setWebMenuOpen] = useState(false);
+  const [mobileWebMenuOpen, setMobileWebMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,23 +22,45 @@ export default function Header({ onSelectPackage }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setWebMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const navLinksBefore = [
     { name: "Dịch vụ", href: "#services" },
     { name: "Bảng giá", href: "#pricing" },
     { name: "Hạn mức", href: "#limits" },
     { name: "Quy trình", href: "#process" },
     { name: "SLA", href: "#sla" },
-    { name: "FAQ", href: "#faq" },
+  ];
+
+  const webSystemLinks = [
+    { name: "Cập nhật", href: "https://dudi-page.vercel.app/" },
+    { name: "Đơn giá", href: "https://dudi-dongia.vercel.app/" },
+    { name: "Bán hàng", href: "https://dudi-banhang.vercel.app/" },
+    { name: "Dịch vụ", href: "https://dudi-gioithieu.vercel.app/" },
+    { name: "SEO", href: "https://dudisoftwareseo.vercel.app/" },
+    { name: "Bảo trì", href: "https://dudi-baotri.vercel.app/" },
+    { name: "Tổng hợp", href: "https://dudi-tonghop.vercel.app/" },
   ];
 
   const handleNavClick = (href, name) => {
     setMobileMenuOpen(false);
+    setWebMenuOpen(false);
     trackCtaClick("header_nav", name, href);
     navigateToSection(href);
   };
 
   const handleAuditClick = () => {
     setMobileMenuOpen(false);
+    setWebMenuOpen(false);
     if (onSelectPackage) onSelectPackage("Chưa rõ");
     trackCtaClick("header_primary", "Gửi website để kiểm tra", "#audit-form");
     navigateToSection("#audit-form");
@@ -51,50 +76,98 @@ export default function Header({ onSelectPackage }) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo & Legal Entity */}
           <a
             href="#"
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-lg p-0.5"
+            className="flex items-center gap-2 sm:gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-lg p-0.5 shrink-0"
             aria-label="Trang chủ DUDI Software"
           >
-            <img
-              src="/logo.webp"
-              alt="Logo DUDI Software"
-              className="w-9 h-9 object-contain shadow-xs group-hover:scale-105 transition-transform duration-200"
-              width="36"
-              height="36"
-            />
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-base sm:text-lg leading-tight text-white tracking-tight flex items-center gap-1">
+              <span className="font-display font-extrabold text-base sm:text-lg lg:text-xl leading-tight text-white tracking-tight flex items-center gap-1">
                 DUDI <span className="text-brand-500 font-bold text-xs sm:text-sm">Software</span>
               </span>
-              <span className="text-[10px] text-slate-300 font-medium tracking-wider uppercase leading-none truncate max-w-[200px] sm:max-w-none">
+              <span className="text-[9.5px] sm:text-[10px] text-slate-300 font-medium tracking-wider uppercase leading-none truncate max-w-[150px] sm:max-w-none">
                 Chăm sóc & Vận hành Website
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navLinks.map((link) => (
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
+            {navLinksBefore.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => handleNavClick(link.href, link.name)}
-                className="px-3 py-1.5 text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="px-2.5 xl:px-3 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 whitespace-nowrap"
               >
                 {link.name}
               </a>
             ))}
+
+            {/* Dropdown: Hệ thống web */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                type="button"
+                onClick={() => setWebMenuOpen(!webMenuOpen)}
+                onMouseEnter={() => setWebMenuOpen(true)}
+                aria-expanded={webMenuOpen}
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 text-xs xl:text-[13px] font-bold rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 whitespace-nowrap ${
+                  webMenuOpen
+                    ? "text-brand-400 bg-white/15"
+                    : "text-slate-200 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                <span>Hệ thống web</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    webMenuOpen ? "rotate-180 text-brand-400" : "text-slate-400"
+                  }`}
+                />
+              </button>
+
+              {/* Dropdown Menu Box */}
+              {webMenuOpen && (
+                <div
+                  onMouseLeave={() => setWebMenuOpen(false)}
+                  className="absolute top-full left-0 mt-1.5 w-44 bg-white rounded-2xl shadow-2xl border border-slate-100 py-1.5 z-[110] animate-fadeIn"
+                >
+                  {webSystemLinks.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        setWebMenuOpen(false);
+                        trackCtaClick("header_web_system", item.name, item.href);
+                      }}
+                      className="block px-4 py-2 text-xs sm:text-[13px] font-bold text-slate-800 hover:text-brand-600 hover:bg-slate-50 transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* FAQ Nav Link */}
+            <a
+              href="#faq"
+              onClick={() => handleNavClick("#faq", "FAQ")}
+              className="px-2.5 xl:px-3 py-1.5 text-xs xl:text-[13px] font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 whitespace-nowrap"
+            >
+              FAQ
+            </a>
           </nav>
 
           {/* Desktop Contact Actions */}
-          <div className="hidden sm:flex items-center">
+          <div className="hidden sm:flex items-center shrink-0">
             {/* Main CTA */}
             <button
               onClick={handleAuditClick}
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-brand-500 hover:bg-brand-600 active:scale-[0.98] shadow-brand-sm hover:shadow-brand rounded-xl transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 border border-brand-400/40"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 text-xs xl:text-[12.5px] font-bold text-white bg-brand-500 hover:bg-brand-600 active:scale-[0.98] shadow-brand-sm hover:shadow-brand rounded-xl transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 border border-brand-400/40 whitespace-nowrap"
             >
               <span>Gửi website để kiểm tra</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -102,10 +175,10 @@ export default function Header({ onSelectPackage }) {
           </div>
 
           {/* Mobile menu trigger */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
             <button
               onClick={handleAuditClick}
-              className="sm:hidden px-3 py-1.5 text-xs font-bold text-white bg-brand-500 hover:bg-brand-600 rounded-lg shadow-xs"
+              className="sm:hidden px-2.5 py-1.5 text-[11px] font-bold text-white bg-brand-500 hover:bg-brand-600 rounded-lg shadow-xs whitespace-nowrap"
             >
               Kiểm tra web
             </button>
@@ -125,8 +198,8 @@ export default function Header({ onSelectPackage }) {
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-slate-800 bg-slate-900/98 backdrop-blur-xl shadow-2xl animate-fadeIn">
-          <div className="px-4 pt-3 pb-5 space-y-2">
-            {navLinks.map((link) => (
+          <div className="px-4 pt-3 pb-5 space-y-1.5 max-h-[calc(100svh-80px)] overflow-y-auto">
+            {navLinksBefore.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -136,6 +209,51 @@ export default function Header({ onSelectPackage }) {
                 {link.name}
               </a>
             ))}
+
+            {/* Mobile Dropdown: Hệ thống web */}
+            <div className="rounded-lg bg-slate-850/60 border border-slate-800/80 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setMobileWebMenuOpen(!mobileWebMenuOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-bold text-brand-400 hover:text-white"
+              >
+                <span>Hệ thống web</span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileWebMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {mobileWebMenuOpen && (
+                <div className="px-3 pb-2 pt-0.5 space-y-1 bg-slate-900/80 border-t border-slate-800">
+                  {webSystemLinks.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        trackCtaClick("header_mobile_web_system", item.name, item.href);
+                      }}
+                      className="block px-2.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile FAQ Nav Link */}
+            <a
+              href="#faq"
+              onClick={() => handleNavClick("#faq", "FAQ")}
+              className="block px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-lg transition-colors"
+            >
+              FAQ
+            </a>
 
             <div className="pt-3 border-t border-slate-800 flex flex-col gap-2">
               <div className="grid grid-cols-2 gap-2">
